@@ -1,8 +1,7 @@
 // src/Hero.jsx
 import { motion } from "framer-motion";
-import { fadeUp } from "./animation";
+import { fadeUp, smoothTo } from "./helpers";
 import heroImage from "./assets/camion.jpg";
-import { smoothTo } from "./helpers";
 
 function Hero() {
   return (
@@ -10,7 +9,7 @@ function Hero() {
       id="hero"
       className="relative overflow-hidden bg-gradient-to-b from-[#173D2C] via-[#123224] to-[#0B1F16]"
     >
-      {/* MOBILE (fond plein + texte centré sur image) */}
+      {/* MOBILE */}
       <div className="md:hidden relative">
         <img
           src={heroImage}
@@ -53,7 +52,7 @@ function Hero() {
         </div>
       </div>
 
-      {/* DESKTOP (layout texte + image côte à côte) */}
+      {/* DESKTOP */}
       <div className="hidden md:grid relative mx-auto max-w-7xl grid-cols-2 items-center gap-10 px-6 py-28">
         <motion.div {...fadeUp(0)}>
           <h1 className="mb-6 text-5xl font-extrabold leading-tight text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
