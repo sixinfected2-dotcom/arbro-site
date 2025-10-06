@@ -1,0 +1,7 @@
+/* App.css - minimal, pas de styles qui écrasent Tailwind */
+
+/* Reset optionnel */
+html, body {
+  margin: 0;
+  padding: 0;
+}
