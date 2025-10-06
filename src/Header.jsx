@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { smoothTo } from "./helpers";
+import { smoothTo } from "./helpers.js";
 import logo from "./assets/logo.png";
 
 /* =========================================================================
