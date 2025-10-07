@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { fadeUp } from "./helpers";
+import { fadeUp } from "./helpers"; 
 import {
   Scissors,
   Leaf,
@@ -53,9 +53,10 @@ export const SERVICES = [
     title: "Abattage d’arbres",
     desc: (
       <>
-        Abattage <span className="text-emerald-600 font-medium">sécuritaire</span>{" "}
-        des arbres à risque, morts ou encombrants. Équipement adapté et
-        périmètre sécurisé.
+        Abattage{" "}
+        <span className="text-emerald-600 font-medium">sécuritaire</span> des
+        arbres à risque, morts ou encombrants. Équipement adapté et périmètre
+        sécurisé.
       </>
     ),
     checks: [
@@ -119,7 +120,10 @@ export const SERVICES = [
 ============================================================================ */
 function Services() {
   return (
-    <section id="services" className="bg-[#f6f9f7] py-24 relative overflow-hidden">
+    <section
+      id="services"
+      className="bg-[#f6f9f7] py-24 relative overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-6 text-center">
         {/* ===== TITRES ===== */}
         <motion.h2

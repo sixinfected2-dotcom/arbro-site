@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { smoothTo } from "./helpers.js";
+import { smoothTo } from "./helpers"; 
 import logo from "./assets/logo.png";
 
 /* =========================================================================
@@ -55,7 +55,7 @@ export default function Header() {
       { label: "Garanties", hash: "#garanties" },
       { label: "À propos", hash: "#apropos" },
       { label: "Estimation", hash: "#estimation" },
-      { label: "Contact", hash: "#footer" }, // scroll fluide vers footer
+      { label: "Contact", hash: "#footer" },
     ],
     []
   );

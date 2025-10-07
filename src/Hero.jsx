@@ -1,6 +1,6 @@
 // src/Hero.jsx
 import { motion } from "framer-motion";
-import { fadeUp, fadeIn, smoothTo } from "./helpers.js";
+import { fadeUp, fadeIn, smoothTo } from "./helpers";
 import heroImage from "./assets/camion.jpg";
 
 function Hero() {
