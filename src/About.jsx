@@ -2,7 +2,7 @@
    À propos — version finale responsive + highlights + animation douce
 ============================================================================ */
 import { motion } from "framer-motion";
-import { fadeUp } from "./animation";
+import { fadeUp } from "./helpers";
 import heroImage from "./assets/camion.jpg";
 
 function About() {

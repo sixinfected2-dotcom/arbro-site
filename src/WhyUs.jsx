@@ -1,6 +1,6 @@
 // src/WhyUs.jsx
 import { motion } from "framer-motion";
-import { fadeUp } from "./animation";
+import { fadeUp } from "./helpers";
 
 /* =========================================================================
    Pourquoi nous choisir — C&T Arbro

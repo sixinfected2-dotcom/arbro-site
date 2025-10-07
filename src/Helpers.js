@@ -32,16 +32,11 @@ export const smoothTo = (hash) => {
   // Position Y de la cible
   const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
 
-  // Scroll fluide avec léger easing
-  window.scrollTo({
-    top: y,
-    behavior: "smooth",
-  });
+  // Scroll fluide
+  window.scrollTo({ top: y, behavior: "smooth" });
 
-  // Ajout visuel : flash subtil sur la section ciblée (repère visuel)
+  // Feedback visuel subtil
   el.style.transition = "box-shadow 0.5s ease";
   el.style.boxShadow = "0 0 0 3px rgba(16,185,129,0.4)";
-  setTimeout(() => {
-    el.style.boxShadow = "none";
-  }, 1000);
+  setTimeout(() => { el.style.boxShadow = "none"; }, 1000);
 };
