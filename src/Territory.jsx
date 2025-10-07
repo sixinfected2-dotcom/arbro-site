@@ -1,6 +1,6 @@
 // src/Territory.jsx
 import { motion } from "framer-motion";
-import { fadeUp, fadeIn } from "./helpers";
+import { fadeUp, fadeIn } from "./Helpers";
 
 /* =========================================================================
    Territoire — Carte Google interactive (zones Magog, Sherbrooke & Estrie)

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { fadeUp } from "./helpers"; 
+import { fadeUp } from "./Helpers"; 
 import {
   Scissors,
   Leaf,
