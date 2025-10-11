@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
 
     <title>C&T Arbro — Élagage & Abattage d’arbres à Magog et Sherbrooke</title>
 
@@ -13,47 +17,50 @@
     />
     <meta
       name="keywords"
-      content="élagage Magog, abattage Sherbrooke, arboriculteur Estrie, C&T Arbro, entretien d’arbres, haubanage, dessouchage, émondage, taille de haies"
+      content="élagage Magog, abattage Sherbrooke, arboriculteur Estrie, entretien arbres, haubanage, dessouchage, émondage, taille haies, urgence arbre"
     />
     <meta name="author" content="C&T Arbro" />
 
-    <!-- ✅ FAVICON -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- ✅ FAVICON & PWA -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1B4332" />
 
-    <!-- ✅ OPEN GRAPH (Aperçu lien Facebook / Messenger) -->
+    <!-- ✅ OPEN GRAPH -->
     <meta property="og:title" content="C&T Arbro — Élagage & Abattage d’arbres · Estrie" />
     <meta
       property="og:description"
-      content="Experts en élagage, abattage et entretien d’arbres à Magog, Sherbrooke et partout en Estrie. Estimation gratuite."
+      content="Experts en élagage, abattage et entretien d’arbres à Magog, Sherbrooke et partout en Estrie. Estimation gratuite et service 24/7."
     />
-    <meta property="og:image" content="https://arbro-site-p2cg.vercel.app/og-image.jpg" />
-    <meta property="og:url" content="https://arbro-site-p2cg.vercel.app/" />
+    <meta property="og:image" content="https://arbro-site.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://arbro-site.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_CA" />
+    <meta property="og:site_name" content="C&T Arbro" />
 
-    <!-- ✅ TWITTER CARDS -->
+    <!-- ✅ TWITTER CARD -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="C&T Arbro — Élagage & Abattage d’arbres · Estrie" />
     <meta
       name="twitter:description"
-      content="Experts en élagage, abattage et entretien d’arbres à Magog, Sherbrooke et en Estrie."
+      content="Entreprise locale d’élagage et abattage d’arbres à Magog et Sherbrooke. Sécurité, rapidité et propreté garanties."
     />
-    <meta name="twitter:image" content="https://arbro-site-p2cg.vercel.app/og-image.jpg" />
+    <meta name="twitter:image" content="https://arbro-site.vercel.app/og-image.jpg" />
+    <meta name="twitter:creator" content="@ctarbro" />
 
-    <!-- ✅ GOOGLE / BUSINESS LOCAL -->
+    <!-- ✅ GOOGLE LOCAL / BUSINESS -->
     <meta
       itemprop="name"
       content="C&T Arbro — Élagage & Abattage d’arbres à Magog et Sherbrooke"
     />
     <meta
       itemprop="description"
-      content="Entreprise locale spécialisée dans l’élagage et l’abattage d’arbres en Estrie. Contactez-nous au (819) 843-3101."
+      content="Entreprise locale spécialisée dans l’élagage, l’abattage et l’entretien d’arbres en Estrie. Estimation gratuite : (819) 843-3101."
     />
-    <meta itemprop="image" content="https://arbro-site-p2cg.vercel.app/og-image.jpg" />
-
-    <!-- ✅ ACCESSIBILITÉ / UX -->
-    <meta name="theme-color" content="#1B4332" />
-    <meta name="color-scheme" content="light dark" />
+    <meta itemprop="image" content="https://arbro-site.vercel.app/og-image.jpg" />
 
     <!-- ✅ PREFETCH / PERFORMANCE -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,15 +69,58 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="image" href="/favicon.png" />
+    <link rel="preload" as="image" href="https://arbro-site.vercel.app/og-image.jpg" />
 
-    <!-- ✅ MANIFESTE (pour PWA future) -->
-    <link rel="manifest" href="/manifest.json" />
+    <!-- ✅ ACCESSIBILITÉ / UX -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="index, follow" />
+    <meta name="format-detection" content="telephone=yes" />
 
-    <!-- React entrypoint -->
+    <!-- ✅ JSON-LD (backup SEO pour robots qui n’exécutent pas le JS) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "C&T Arbro",
+        "description": "Entreprise locale d’élagage, abattage et entretien d’arbres à Magog et Sherbrooke.",
+        "image": "https://arbro-site.vercel.app/og-image.jpg",
+        "url": "https://arbro-site.vercel.app",
+        "telephone": ["+18198433101", "+18194372104"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Magog",
+          "addressRegion": "QC",
+          "postalCode": "J1X",
+          "addressCountry": "CA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.266,
+          "longitude": -72.147
+        },
+        "openingHours": "Mo-Su 00:00-23:59",
+        "sameAs": [
+          "https://www.facebook.com/tonlienici",
+          "https://share.google/DiDwdpKmLmBViuMd6"
+        ]
+      }
+    </script>
+
+    <!-- ✅ ENTRYPOINT REACT -->
     <script type="module" src="/src/main.jsx"></script>
   </head>
 
-  <body class="antialiased bg-[#f6f8f9] text-slate-800">
+  <body
+    class="antialiased bg-[#f6f8f9] text-slate-800 selection:bg-emerald-200/60"
+  >
     <div id="root"></div>
+
+    <!-- ✅ Fallback no-script pour SEO -->
+    <noscript>
+      <p style="text-align:center; padding:2rem; color:#333;">
+        Ce site nécessite JavaScript pour fonctionner correctement.
+      </p>
+    </noscript>
   </body>
 </html>

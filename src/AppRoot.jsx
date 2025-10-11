@@ -1,11 +1,10 @@
-// src/AppRoot.jsx
 import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import Header from "./Header";
 import Footer from "./Footer";
 
 /* =========================================================================
-   Lazy loading des sections lourdes pour meilleures performances
+   Lazy loading des sections — améliore la vitesse de chargement
 ============================================================================ */
 const Hero = lazy(() => import("./Hero"));
 const Services = lazy(() => import("./Services"));
@@ -18,7 +17,7 @@ const About = lazy(() => import("./About"));
 const Estimation = lazy(() => import("./Estimation"));
 
 /* =========================================================================
-   Variants d’animation — entrée fluide entre les sections
+   Animation d’entrée fluide entre les sections
 ============================================================================ */
 const sectionFade = {
   hidden: { opacity: 0, y: 30 },
@@ -33,7 +32,7 @@ const sectionFade = {
 };
 
 /* =========================================================================
-   App Root — Structure principale du site
+   AppRoot — Structure principale du site
 ============================================================================ */
 export default function AppRoot() {
   return (
@@ -46,7 +45,13 @@ export default function AppRoot() {
 
       {/* CONTENU PRINCIPAL */}
       <main>
-        <Suspense fallback={<div className="text-center py-20">Chargement...</div>}>
+        <Suspense
+          fallback={
+            <div className="text-center py-32 text-slate-500 font-medium">
+              Chargement du contenu...
+            </div>
+          }
+        >
           {[Hero, Services, WhyUs, Territory, Gallery, Avis, Guarantees, About, Estimation].map(
             (Component, index) => (
               <motion.section
@@ -63,15 +68,22 @@ export default function AppRoot() {
         </Suspense>
       </main>
 
-      {/* SECTION CONTACT (pour scroll fluide + SEO) */}
-      <section id="contact" aria-hidden="false" className="sr-only">
-        Contactez C&T Arbro — Magog / Sherbrooke — 819-843-3101 · 819-437-2104
+      {/* SECTION CONTACT (pour le scroll fluide + SEO sémantique) */}
+      <section
+        id="contact"
+        aria-hidden="false"
+        className="sr-only"
+      >
+        Contactez C&T Arbro — Élagage, Abattage et Entretien d’arbres à Magog et Sherbrooke.
+        Téléphone : 819-843-3101 / 819-437-2104.
       </section>
 
       {/* FOOTER */}
       <Footer />
 
-      {/* ==================== SCHEMA LOCAL BUSINESS ==================== */}
+      {/* =======================================================================
+          Données structurées SEO — Google Local Business Schema
+      ======================================================================= */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -79,12 +91,15 @@ export default function AppRoot() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "C&T Arbro",
-            "image": "https://arbro-site-p2cg.vercel.app/og-image.jpg",
-            "@id": "https://arbro-site-p2cg.vercel.app",
-            "url": "https://arbro-site-p2cg.vercel.app",
+            "description":
+              "Entreprise locale d’élagage, abattage et entretien d’arbres à Magog et Sherbrooke. Service professionnel 24/7 en Estrie.",
+            "image": "https://arbro-site.vercel.app/og-image.jpg",
+            "@id": "https://arbro-site.vercel.app",
+            "url": "https://arbro-site.vercel.app",
             "telephone": ["+18198433101", "+18194372104"],
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "Magog, QC",
               "addressLocality": "Magog",
               "addressRegion": "QC",
               "postalCode": "J1X",

@@ -1,46 +1,56 @@
-/* =========================================================================
-   À propos — version finale responsive + highlights + animation douce
-============================================================================ */
+// src/About.jsx
 import { motion } from "framer-motion";
 import { fadeUp } from "./Helpers";
 import heroImage from "./assets/camion.jpg";
 
+/* =========================================================================
+   À propos — version haut de gamme : ton humain, design équilibré, effet premium
+============================================================================ */
+
 function About() {
   const paragraphs = [
     <>
-      Depuis plus de <span className="text-emerald-600 font-semibold">33 ans</span>,{" "}
+      Depuis plus de{" "}
+      <span className="text-emerald-600 font-semibold">33 ans</span>,{" "}
       <span className="text-emerald-600 font-semibold">C&T Arbro</span> accompagne les
       particuliers et entreprises de l’Estrie dans{" "}
       <span className="text-emerald-600 font-semibold">l’entretien</span> et{" "}
-      <span className="text-emerald-600 font-semibold">l’abattage d’arbres</span>.
+      <span className="text-emerald-600 font-semibold">l’abattage d’arbres</span> de
+      manière responsable et soignée.
     </>,
     <>
-      Nous croyons qu’un travail bien fait commence par{" "}
-      <span className="text-emerald-600 font-medium">l’écoute de nos clients</span> et le
-      respect de leur environnement.
+      Notre priorité :{" "}
+      <span className="text-emerald-600 font-medium">écouter nos clients</span>,
+      comprendre leurs besoins et intervenir avec{" "}
+      <span className="text-emerald-600 font-medium">respect de l’environnement</span> et
+      du voisinage.
     </>,
     <>
-      Chaque intervention est réalisée avec soin, dans les{" "}
-      <span className="text-emerald-600 font-medium">délais promis</span>, et toujours dans
-      un souci de <span className="text-emerald-600 font-medium">sécurité</span> et de{" "}
-      <span className="text-emerald-600 font-medium">propreté</span>.
+      Chaque projet est réalisé avec soin, dans les{" "}
+      <span className="text-emerald-600 font-medium">délais convenus</span>, et toujours
+      dans un souci de{" "}
+      <span className="text-emerald-600 font-medium">sécurité</span> et de{" "}
+      <span className="text-emerald-600 font-medium">propreté irréprochable</span>.
     </>,
     <>
-      Grâce à notre service de{" "}
-      <span className="text-emerald-600 font-semibold">nacelle</span>, nous offrons des
-      travaux en hauteur sécuritaires et efficaces.
+      Grâce à notre{" "}
+      <span className="text-emerald-600 font-semibold">service de nacelle</span>, nous
+      réalisons des travaux en hauteur avec précision, efficacité et sécurité maximale.
     </>,
     <>
-      Une équipe <span className="text-emerald-600 font-medium">locale</span>,
-      <span className="text-emerald-600 font-medium"> passionnée</span> et fière de
-      contribuer à la beauté de votre terrain.
+      Une équipe{" "}
+      <span className="text-emerald-600 font-medium">locale</span>,{" "}
+      <span className="text-emerald-600 font-medium">expérimentée</span> et fière de
+      contribuer à la{" "}
+      <span className="text-emerald-600 font-medium">valeur et beauté</span> de votre
+      propriété.
     </>,
   ];
 
   return (
     <section
       id="apropos"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f8faf9] to-[#eef5f3] py-20 md:py-28"
+      className="relative overflow-hidden bg-gradient-to-b from-[#f8faf9] to-[#eef5f3] py-24 md:py-28"
     >
       <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 items-center gap-14 md:gap-20 px-5 sm:px-6 md:px-8">
         {/* Image mobile */}
@@ -77,9 +87,9 @@ function About() {
 
           <motion.h3
             {...fadeUp(0.1)}
-            className="mb-8 text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight"
+            className="mb-8 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight"
           >
-            Entreprise locale, service expert
+            Une entreprise locale au savoir-faire reconnu
           </motion.h3>
 
           <div className="space-y-5 text-[15px] sm:text-[16px] leading-relaxed text-slate-700">
@@ -105,12 +115,13 @@ function About() {
           viewport={{ once: true }}
           className="relative hidden md:block"
         >
-          <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-emerald-100">
+          <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-emerald-100 group">
             <img
               src={heroImage}
               alt="Travaux d'élagage C&T Arbro"
-              className="h-[440px] md:h-[500px] w-full object-cover rounded-[2rem] transform hover:scale-[1.03] transition-transform duration-700 ease-out"
+              className="h-[440px] md:h-[500px] w-full object-cover rounded-[2rem] transform group-hover:scale-[1.03] transition-transform duration-700 ease-out brightness-[0.98]"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-700 rounded-[2rem]" />
           </div>
         </motion.div>
       </div>

@@ -4,14 +4,13 @@ import { fadeUp } from "./Helpers";
 
 /* =========================================================================
    Pourquoi nous choisir — C&T Arbro
-   - Version professionnelle (sans mention CNESST)
-   - Mêmes animations, style et structure
+   Version haut de gamme : élégance, lisibilité, homogénéité
 ============================================================================ */
 
 const cards = [
   {
     title: "Sécurité garantie",
-    desc: "Interventions réalisées selon les normes les plus strictes de sécurité et d'assurance professionnelle.",
+    desc: "Chaque intervention est réalisée dans le respect des normes les plus strictes et couverte par notre assurance responsabilité professionnelle.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -30,7 +29,7 @@ const cards = [
   },
   {
     title: "Travail propre & minutieux",
-    desc: "Démontage contrôlé, déchiquetage et nettoyage complet du site après chaque intervention.",
+    desc: "Nous laissons chaque chantier impeccable : démontage contrôlé, déchiquetage et nettoyage complet du site inclus.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -45,7 +44,7 @@ const cards = [
   },
   {
     title: "Équipe qualifiée",
-    desc: "Arboriculteurs certifiés et passionnés, offrant un service professionnel et personnalisé.",
+    desc: "Des arboriculteurs expérimentés, passionnés par leur métier, formés aux meilleures techniques d’entretien et d’abattage.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -64,7 +63,7 @@ const cards = [
   },
   {
     title: "Satisfaction locale",
-    desc: "Des clients fidèles et satisfaits à Magog, Sherbrooke et partout en Estrie — notre meilleure publicité.",
+    desc: "Une réputation bâtie sur la confiance et la satisfaction de nos clients à Magog, Sherbrooke et dans toute l’Estrie.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -85,36 +84,40 @@ const cards = [
 
 function WhyUs() {
   return (
-    <section id="pourquoi-nous" className="bg-[#f7faf9] py-20 md:py-24">
+    <section
+      id="pourquoi-nous"
+      className="bg-[#f7faf9] py-24 md:py-28 relative overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <motion.div
           {...fadeUp(0)}
-          className="text-center max-w-2xl mx-auto mb-10"
+          className="text-center max-w-2xl mx-auto mb-14"
         >
           <h2 className="text-sm font-semibold uppercase tracking-widest text-emerald-700">
-            Pourquoi nous
+            Pourquoi nous choisir
           </h2>
-          <h3 className="mt-2 text-3xl md:text-4xl font-extrabold text-slate-900">
-            Un service fiable, sécuritaire et soigné
+          <h3 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            L’excellence au service de vos arbres
           </h3>
-          <p className="mt-3 text-[15px] text-slate-600">
-            Chez C&amp;T Arbro, on allie expertise, rigueur et respect de votre
-            propriété pour livrer des résultats impeccables — du premier
-            contact jusqu’au nettoyage final.
+          <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+            Chez <span className="font-semibold text-emerald-700">C&T Arbro</span>,
+            nous allions expertise, sécurité et respect de l’environnement pour
+            offrir un service professionnel et durable à chaque client.
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {cards.map(({ title, desc, Icon }, i) => (
             <motion.div
               key={title}
               {...fadeUp(0.05 + i * 0.05)}
-              className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all duration-300"
             >
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100 shrink-0">
                   <Icon />
                 </div>
                 <div>

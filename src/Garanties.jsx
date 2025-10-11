@@ -3,22 +3,23 @@ import { motion } from "framer-motion";
 import { ShieldCheck, HardHat, ThumbsUp } from "lucide-react";
 
 /* =========================================================================
-   Garanties — Version sans CNESST
+   Garanties — C&T Arbro
+   Version haut de gamme : confiance, rigueur, professionnalisme
 ============================================================================ */
 const GUARANTEES = [
   {
     title: "Assurance responsabilité",
-    text: "Nous sommes entièrement couverts par une assurance responsabilité professionnelle pour protéger nos clients et nos employés en tout temps.",
+    text: "Chaque intervention est couverte par une assurance responsabilité professionnelle complète, pour votre sécurité et celle de nos équipes.",
     icon: <ShieldCheck className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
   {
     title: "Sécurité et professionnalisme",
-    text: "Nos équipes travaillent selon des protocoles de sécurité rigoureux et des pratiques professionnelles reconnues pour garantir des interventions sécuritaires.",
+    text: "Nos arboriculteurs suivent des protocoles de sécurité stricts et utilisent des équipements certifiés pour garantir un travail exemplaire et sécuritaire.",
     icon: <HardHat className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
   {
     title: "Satisfaction garantie",
-    text: "Chaque chantier est réalisé avec soin, dans les délais convenus, et toujours remis propre. Notre priorité : votre tranquillité d’esprit.",
+    text: "Nous tenons nos engagements : ponctualité, propreté du site et résultats à la hauteur de vos attentes — c’est notre promesse Arbro.",
     icon: <ThumbsUp className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
 ];
@@ -45,7 +46,10 @@ const item = {
 
 function Guarantees() {
   return (
-    <section id="garanties" className="bg-[#f8faf9] py-20 md:py-24 overflow-hidden">
+    <section
+      id="garanties"
+      className="bg-[#f8faf9] py-24 md:py-28 overflow-hidden relative"
+    >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -56,13 +60,14 @@ function Guarantees() {
         <h2 className="text-sm font-semibold uppercase tracking-widest text-emerald-700 mb-2">
           Garanties & sécurité
         </h2>
-        <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
-          Notre engagement envers votre sécurité
+        <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6">
+          Notre engagement envers la qualité et la confiance
         </h3>
         <p className="max-w-2xl mx-auto text-[15px] text-slate-600 mb-12 leading-relaxed">
-          Chez C&T Arbro, la sécurité, la rigueur et la qualité sont au cœur de chaque
-          intervention. Nous nous engageons à offrir un service irréprochable, 
-          réalisé par des professionnels qualifiés et soucieux de votre satisfaction.
+          Chez <span className="font-semibold text-emerald-700">C&T Arbro</span>, la
+          sécurité, la rigueur et le professionnalisme sont au cœur de chacune de nos
+          interventions. Nos garanties témoignent de notre engagement envers la
+          satisfaction et la tranquillité d’esprit de chaque client.
         </p>
       </motion.div>
 
@@ -77,12 +82,20 @@ function Guarantees() {
           <motion.div
             key={i}
             variants={item}
-            whileHover={{ y: -6, scale: 1.03, transition: { duration: 0.25 } }}
-            className="group rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-2xl p-8 text-center transition-all duration-300"
+            whileHover={{
+              y: -8,
+              scale: 1.03,
+              transition: { duration: 0.25, ease: "easeOut" },
+            }}
+            className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl p-8 text-center transition-all duration-300 hover:border-emerald-500/40"
           >
             <div className="flex justify-center mb-5">{g.icon}</div>
-            <h4 className="text-lg font-semibold text-slate-900 mb-2">{g.title}</h4>
-            <p className="text-[15px] text-slate-600 leading-relaxed">{g.text}</p>
+            <h4 className="text-lg font-semibold text-slate-900 mb-2">
+              {g.title}
+            </h4>
+            <p className="text-[15px] text-slate-600 leading-relaxed">
+              {g.text}
+            </p>
           </motion.div>
         ))}
       </motion.div>

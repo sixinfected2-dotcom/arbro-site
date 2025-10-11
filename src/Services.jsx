@@ -1,5 +1,6 @@
+// src/Services.jsx
 import { motion } from "framer-motion";
-import { fadeUp } from "./Helpers"; 
+import { fadeUp } from "./Helpers";
 import {
   Scissors,
   Leaf,
@@ -20,8 +21,8 @@ export const SERVICES = [
     desc: (
       <>
         Taille <span className="text-emerald-600 font-medium">précise</span> et
-        sécuritaire pour maintenir la santé et la structure des arbres tout en
-        préservant leur esthétisme.
+        sécuritaire pour maintenir la santé et la structure de vos arbres tout
+        en préservant leur esthétisme.
       </>
     ),
     checks: [
@@ -39,7 +40,7 @@ export const SERVICES = [
         <span className="text-emerald-600 font-medium">
           améliorer la croissance
         </span>
-        , la lumière et l’apparence des arbres.
+        , la lumière et l’apparence générale de vos arbres.
       </>
     ),
     checks: [
@@ -56,7 +57,7 @@ export const SERVICES = [
         Abattage{" "}
         <span className="text-emerald-600 font-medium">sécuritaire</span> des
         arbres à risque, morts ou encombrants. Équipement adapté et périmètre
-        sécurisé.
+        de travail entièrement sécurisé.
       </>
     ),
     checks: [
@@ -104,7 +105,7 @@ export const SERVICES = [
       <>
         Renforcement structurel des arbres{" "}
         <span className="text-emerald-600 font-medium">fragilisés</span> à l’aide
-        de haubans et de câbles de soutien.
+        de haubans et câbles de soutien discrets et résistants.
       </>
     ),
     checks: [
@@ -116,13 +117,13 @@ export const SERVICES = [
 ];
 
 /* =========================================================================
-   Composant principal — Desktop + Mobile horizontal scroll
+   Composant principal — Services C&T Arbro
 ============================================================================ */
 function Services() {
   return (
     <section
       id="services"
-      className="bg-[#f6f9f7] py-24 relative overflow-hidden"
+      className="bg-[#f6f9f7] py-24 md:py-28 relative overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6 text-center">
         {/* ===== TITRES ===== */}
@@ -135,7 +136,7 @@ function Services() {
 
         <motion.h3
           {...fadeUp(0.05)}
-          className="mt-2 text-3xl md:text-4xl font-extrabold text-slate-900"
+          className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
         >
           Interventions{" "}
           <span className="text-emerald-600">professionnelles</span>
@@ -143,13 +144,13 @@ function Services() {
 
         <motion.p
           {...fadeUp(0.1)}
-          className="mx-auto mt-3 max-w-2xl text-slate-600 text-[15px]"
+          className="mx-auto mt-4 max-w-2xl text-[15px] text-slate-600 leading-relaxed"
         >
           Des solutions complètes pour la{" "}
           <span className="text-emerald-600 font-medium">santé</span>, la{" "}
           <span className="text-emerald-600 font-medium">sécurité</span> et
-          l’esthétique de vos arbres — avec un savoir-faire local et attentif aux
-          détails.
+          l’esthétique de vos arbres — avec un savoir-faire local et un souci du
+          détail irréprochable.
         </motion.p>
 
         {/* ===== MOBILE — SCROLL HORIZONTAL ===== */}
@@ -160,19 +161,21 @@ function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
-              className="snap-center flex-shrink-0 w-[85%] rounded-2xl border border-black/10 bg-white p-6 text-left transition-all duration-200 hover:border-emerald-500/50"
+              className="snap-center flex-shrink-0 w-[85%] rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-3 mb-3">
                 {s.icon}
-                <h4 className="text-lg font-bold text-slate-900">{s.title}</h4>
+                <h4 className="text-lg font-semibold text-slate-900">
+                  {s.title}
+                </h4>
               </div>
-              <p className="text-sm text-slate-600 mb-3 leading-relaxed">
+              <p className="text-[14px] text-slate-600 mb-3 leading-relaxed">
                 {s.desc}
               </p>
-              <ul className="space-y-1 text-sm text-slate-700">
+              <ul className="space-y-1 text-[14px] text-slate-700">
                 {s.checks.map((c, idx) => (
                   <li key={idx} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-emerald-600" />
+                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                     {c}
                   </li>
                 ))}
@@ -189,20 +192,22 @@ function Services() {
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-all duration-200 hover:border-emerald-500/50"
+              whileHover={{ y: -5, scale: 1.01 }}
+              className="rounded-2xl border border-slate-200 bg-white p-7 text-left shadow-sm hover:shadow-md hover:border-emerald-500/50 transition-all duration-200"
             >
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-3 mb-4">
                 {s.icon}
-                <h4 className="text-lg font-bold text-slate-900">{s.title}</h4>
+                <h4 className="text-lg font-semibold text-slate-900">
+                  {s.title}
+                </h4>
               </div>
-              <p className="text-sm text-slate-600 mb-3 leading-relaxed">
+              <p className="text-[14px] text-slate-600 mb-3 leading-relaxed">
                 {s.desc}
               </p>
-              <ul className="space-y-1 text-sm text-slate-700">
+              <ul className="space-y-1 text-[14px] text-slate-700">
                 {s.checks.map((c, idx) => (
                   <li key={idx} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-emerald-600" />
+                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                     {c}
                   </li>
                 ))}

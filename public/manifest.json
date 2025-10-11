@@ -1,16 +1,45 @@
 {
   "name": "C&T Arbro",
   "short_name": "C&T Arbro",
-  "description": "Élagage, abattage et entretien d’arbres à Magog, Sherbrooke et partout en Estrie.",
+  "description": "Élagage, abattage et entretien d’arbres à Magog, Sherbrooke et partout en Estrie. Service professionnel 24h/24, 7 jours sur 7.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#1B4332",
   "theme_color": "#1B4332",
+  "lang": "fr-CA",
+  "dir": "ltr",
+  "categories": ["business", "services", "home_improvement"],
   "icons": [
     {
       "src": "/favicon.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Demander une estimation",
+      "url": "/#estimation",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Voir la galerie",
+      "url": "/#galerie",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Territoire desservi",
+      "url": "/#territoire",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96", "type": "image/png" }]
     }
   ]
 }

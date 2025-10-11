@@ -1,16 +1,20 @@
 // src/components/Footer.jsx
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import logo from "./assets/logo.png";
 import facebook from "./assets/facebook.png";
 import google from "./assets/google.png";
 
-function Footer() {
+/* =========================================================================
+   Footer — version haut de gamme & cohérente avec tout le site
+============================================================================ */
+
+export default function Footer() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.4 });
   const [highlight, setHighlight] = useState(false);
 
-  // Effet de surbrillance verte quand on arrive sur le footer
   useEffect(() => {
     if (isInView) {
       setHighlight(true);
@@ -26,29 +30,30 @@ function Footer() {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className={`relative bg-black text-gray-300 py-14 px-6 md:px-16 transition-[box-shadow] duration-700 ${
-        highlight ? "shadow-[0_0_40px_#16a34a55]" : ""
+      className={`relative bg-gradient-to-b from-[#0b0b0b] to-black text-gray-300 py-16 px-6 md:px-16 transition-[box-shadow] duration-700 ${
+        highlight ? "shadow-[0_0_45px_#16a34a55]" : ""
       }`}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12">
         {/* LOGO + DESCRIPTION */}
-        <div>
+        <div className="md:col-span-2">
           <img
             src={logo}
             alt="C&T Arbro"
-            className="h-20 w-auto mb-4 drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
+            className="h-20 w-auto mb-4 drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]"
           />
-          <p className="text-sm leading-relaxed">
-            Entreprise locale au service de vos arbres à{" "}
-            <span className="text-white font-medium">Magog</span>,
-            <span className="text-white font-medium"> Sherbrooke</span> et en{" "}
-            <span className="text-white font-medium">Estrie</span>.
+          <p className="text-sm leading-relaxed text-gray-400 max-w-sm">
+            Entreprise locale spécialisée en{" "}
+            <span className="text-white font-medium">élagage, abattage</span> et{" "}
+            <span className="text-white font-medium">entretien d’arbres</span>{" "}
+            à <strong>Magog</strong>, <strong>Sherbrooke</strong> et dans toute
+            l’<strong>Estrie</strong>.
           </p>
 
           {/* Réseaux sociaux */}
           <div className="mt-6">
             <h3 className="text-white font-semibold text-lg mb-3">
-              Réseaux sociaux
+              Suivez-nous
             </h3>
             <div className="flex space-x-6">
               {/* Facebook */}
@@ -75,46 +80,52 @@ function Footer() {
 
         {/* COORDONNÉES */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-4">Coordonnées</h3>
-          <p className="space-y-1">
-            <a
-              href="tel:8198433101"
-              className="block hover:text-emerald-400 transition"
-            >
-              819-843-3101
-            </a>
-            <a
-              href="tel:8194372104"
-              className="block hover:text-emerald-400 transition"
-            >
-              819-437-2104
-            </a>
-          </p>
-          <p className="mt-2">
-            <a
-              href="mailto:info@ctarbro.ca"
-              className="hover:text-emerald-400 transition"
-            >
-              info@ctarbro.ca
-            </a>
-          </p>
-          <p className="mt-2">Magog · Sherbrooke · Estrie</p>
+          <h3 className="text-white font-semibold text-lg mb-4">
+            Coordonnées
+          </h3>
+          <ul className="space-y-2 text-sm">
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 text-emerald-400" />
+              <a href="tel:8198433101" className="hover:text-emerald-400 transition">
+                819-843-3101
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 text-emerald-400" />
+              <a href="tel:8194372104" className="hover:text-emerald-400 transition">
+                819-437-2104
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail className="h-4 w-4 text-emerald-400" />
+              <a href="mailto:info@ctarbro.ca" className="hover:text-emerald-400 transition">
+                info@ctarbro.ca
+              </a>
+            </li>
+            <li className="flex items-center gap-2 mt-2">
+              <MapPin className="h-4 w-4 text-emerald-400" />
+              <span>Magog · Sherbrooke · Estrie</span>
+            </li>
+          </ul>
         </div>
 
-        {/* HEURES D’OUVERTURE */}
+        {/* HORAIRES */}
         <div>
           <h3 className="text-white font-semibold text-lg mb-4">
             Heures d’ouverture
           </h3>
-          <p>Ouvert 24h/24 – 7 jours sur 7</p>
-          <p className="mt-1 text-emerald-400 font-semibold">
-            Urgence disponible
+          <p className="text-sm text-gray-400 leading-relaxed">
+            Ouvert <span className="text-white font-medium">24h/24 – 7 jours/7</span>
+            <br />
+            <span className="text-emerald-400 font-semibold">
+              Urgence disponible
+            </span>
           </p>
         </div>
 
         {/* LIENS */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-4">Liens</h3>
+          <h3 className="text-white font-semibold text-lg mb-4">Navigation</h3>
           <ul className="space-y-2 text-sm">
             <li>
               <a href="#services" className="hover:text-emerald-400 transition">
@@ -127,53 +138,39 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a
-                href="#estimation"
-                className="hover:text-emerald-400 transition"
-              >
+              <a href="#estimation" className="hover:text-emerald-400 transition">
                 Estimation
               </a>
             </li>
             <li>
-              <a
-                href="#territoire"
-                className="hover:text-emerald-400 transition"
-              >
+              <a href="#territoire" className="hover:text-emerald-400 transition">
                 Territoire
               </a>
             </li>
           </ul>
         </div>
-
-        {/* ZONES DESSERVIES */}
-        <div>
-          <h3 className="text-white font-semibold text-lg mb-4">
-            Zones desservies
-          </h3>
-          <p className="text-sm leading-relaxed">
-            Magog, Sherbrooke, Orford, Austin, Eastman,
-            Sainte-Catherine-de-Hatley, North Hatley, Ayer’s Cliff, et toute
-            l’Estrie.
-          </p>
-        </div>
       </div>
 
       {/* BAS DE PAGE */}
-      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-        © 2025 <span className="text-white font-medium">C&T Arbro</span> — Tous
-        droits réservés.
-        <div className="mt-2 space-x-3">
+      <div className="mt-14 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+        <p>
+          © 2025 <span className="text-white font-medium">C&T Arbro</span> — Tous
+          droits réservés.
+        </p>
+        <div className="mt-2 space-x-4">
           <a href="#" className="hover:text-emerald-400 transition">
             Politique de confidentialité
           </a>
-          <span>|</span>
+          <span className="text-gray-700">|</span>
           <a href="#" className="hover:text-emerald-400 transition">
             Conditions d’utilisation
           </a>
         </div>
       </div>
+
+      {/* Lueur décorative */}
+      <div className="absolute -top-24 left-0 w-[300px] h-[300px] bg-emerald-500/20 blur-3xl rounded-full opacity-30" />
+      <div className="absolute -bottom-20 right-0 w-[260px] h-[260px] bg-emerald-600/20 blur-3xl rounded-full opacity-30" />
     </motion.footer>
   );
 }
-
-export default Footer;
