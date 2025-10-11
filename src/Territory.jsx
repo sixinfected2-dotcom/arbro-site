@@ -7,7 +7,7 @@ import { fadeUp, fadeIn } from "./Helpers";
 ============================================================================ */
 function Territory() {
   return (
-    <section id="territoire" className="bg-[#f7faf9] py-16 md:py-20">
+    <section id="territoire" className="bg-[#f7faf9] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6 text-center">
         {/* TITRES */}
         <motion.h2

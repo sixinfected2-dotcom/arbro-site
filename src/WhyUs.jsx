@@ -4,14 +4,14 @@ import { fadeUp } from "./Helpers";
 
 /* =========================================================================
    Pourquoi nous choisir — C&T Arbro
-   - Section premium avec cartes animées
-   - Icônes SVG inline (aucune dépendance)
+   - Version professionnelle (sans mention CNESST)
+   - Mêmes animations, style et structure
 ============================================================================ */
 
 const cards = [
   {
     title: "Sécurité garantie",
-    desc: "Procédures CNESST et assurance responsabilité pour chaque intervention.",
+    desc: "Interventions réalisées selon les normes les plus strictes de sécurité et d'assurance professionnelle.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -30,7 +30,7 @@ const cards = [
   },
   {
     title: "Travail propre & minutieux",
-    desc: "Démontage contrôlé, déchiquetage et nettoyage complet du site après travaux.",
+    desc: "Démontage contrôlé, déchiquetage et nettoyage complet du site après chaque intervention.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -45,7 +45,7 @@ const cards = [
   },
   {
     title: "Équipe qualifiée",
-    desc: "Arboriculteurs certifiés et expérimentés, passionnés par leur métier.",
+    desc: "Arboriculteurs certifiés et passionnés, offrant un service professionnel et personnalisé.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -64,7 +64,7 @@ const cards = [
   },
   {
     title: "Satisfaction locale",
-    desc: "Des centaines de clients satisfaits à Magog, Sherbrooke et en Estrie.",
+    desc: "Des clients fidèles et satisfaits à Magog, Sherbrooke et partout en Estrie — notre meilleure publicité.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -85,7 +85,7 @@ const cards = [
 
 function WhyUs() {
   return (
-    <section id="pourquoi-nous" className="bg-[#f7faf9] py-16 md:py-20">
+    <section id="pourquoi-nous" className="bg-[#f7faf9] py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <motion.div

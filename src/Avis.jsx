@@ -28,7 +28,7 @@ export default function Avis() {
   ];
 
   return (
-    <section id="avis" className="py-16 bg-gray-50">
+    <section id="avis" className="py-20 md:py-24 bg-gray-50">
       <div className="container mx-auto text-center px-4">
         <h2 className="text-3xl font-bold mb-8">Votre satisfaction, nos meilleures références</h2>
 
