@@ -1,7 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import Header from "./Header";
-import Footer from "./components/Footer";
+import Footer from "./Footer.jsx";
+
 
 /* =========================================================================
    Lazy loading des sections — améliore les performances
