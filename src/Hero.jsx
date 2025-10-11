@@ -1,7 +1,7 @@
 // src/Hero.jsx
 import { motion } from "framer-motion";
 import { fadeUp, fadeIn, smoothTo } from "./Helpers";
-import heroImage from "./assets/camion.jpg";
+import heroImage from "./assets/optimized/camion.webp";
 
 function Hero() {
   return (
@@ -14,7 +14,10 @@ function Hero() {
         <img
           src={heroImage}
           alt="Équipe C&T Arbro"
-          className="absolute inset-0 h-full w-full object-cover brightness-[0.75]"
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover brightness-[0.75] blur-sm transition-all duration-700 ease-out"
+          onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 flex flex-col items-center text-center px-6 py-32">
@@ -102,7 +105,10 @@ function Hero() {
             <img
               src={heroImage}
               alt="Camion et équipe en intervention"
-              className="h-[480px] w-full rounded-2xl object-cover brightness-[0.95]"
+              loading="lazy"
+              decoding="async"
+              className="h-[480px] w-full rounded-2xl object-cover brightness-[0.95] blur-sm transition-all duration-700 ease-out hover:scale-[1.02]"
+              onLoad={(e) => e.currentTarget.classList.remove('blur-sm')}
               draggable={false}
             />
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/25 to-transparent"></div>

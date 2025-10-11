@@ -2,15 +2,15 @@
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 🖼️ Import des images locales
-import img1 from "./assets/gallery/gallery1.jpg";
-import img2 from "./assets/gallery/gallery2.jpg";
-import img3 from "./assets/gallery/gallery3.jpg";
-import img4 from "./assets/gallery/gallery4.jpg";
-import img5 from "./assets/gallery/gallery5.jpg";
-import img6 from "./assets/gallery/gallery6.jpg";
-import img7 from "./assets/gallery/gallery7.jpg";
-import img8 from "./assets/gallery/gallery8.jpg";
+// 🖼️ Import des images optimisées (.webp)
+import img1 from "./assets/optimized/gallery1.webp";
+import img2 from "./assets/optimized/gallery2.webp";
+import img3 from "./assets/optimized/gallery3.webp";
+import img4 from "./assets/optimized/gallery4.webp";
+import img5 from "./assets/optimized/gallery5.webp";
+import img6 from "./assets/optimized/gallery6.webp";
+import img7 from "./assets/optimized/gallery7.webp";
+import img8 from "./assets/optimized/gallery8.webp";
 
 const GALLERY_IMAGES = [
   { src: img1, alt: "Parc d’équipements et véhicules spécialisés C&T Arbro" },
@@ -39,7 +39,7 @@ export default function Gallery() {
   const images = useMemo(() => GALLERY_IMAGES, []);
   const isOpen = openIndex !== null;
 
-  // Scroll lock
+  // Scroll lock quand lightbox ouverte
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
   }, [isOpen]);
@@ -101,10 +101,12 @@ export default function Gallery() {
               <img
                 src={img.src}
                 alt={img.alt}
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-110 blur-sm"
+                onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-3 text-white text-sm font-medium px-2 text-center">
+              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-3 text-white text-sm font-medium px-3 text-center">
                 {img.alt}
               </div>
             </motion.div>
@@ -185,7 +187,7 @@ export default function Gallery() {
         )}
       </AnimatePresence>
 
-      {/* Arrière-plan décoratif */}
+      {/* Décor arrière-plan */}
       <div className="absolute -bottom-24 left-0 w-[280px] h-[280px] bg-emerald-100/40 blur-3xl rounded-full opacity-50" />
       <div className="absolute -top-20 right-0 w-[320px] h-[320px] bg-emerald-200/30 blur-3xl rounded-full opacity-40" />
     </section>

@@ -6,9 +6,5 @@ import AppRoot from "./AppRoot";
    (AppRoot contient la structure, les sections et les animations)
 ============================================================================ */
 export default function App() {
-  return (
-    <>
-      <AppRoot />
-    </>
-  );
+  return <AppRoot />;
 }

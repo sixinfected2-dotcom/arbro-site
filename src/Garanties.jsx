@@ -4,22 +4,23 @@ import { ShieldCheck, HardHat, ThumbsUp } from "lucide-react";
 
 /* =========================================================================
    Garanties — C&T Arbro
-   Version haut de gamme : confiance, rigueur, professionnalisme
+   Version finale : fluidité, cohérence visuelle, SEO local & professionnalisme
 ============================================================================ */
+
 const GUARANTEES = [
   {
     title: "Assurance responsabilité",
-    text: "Chaque intervention est couverte par une assurance responsabilité professionnelle complète, pour votre sécurité et celle de nos équipes.",
+    text: "Chaque intervention est couverte par une assurance responsabilité professionnelle complète, garantissant votre sécurité et celle de nos équipes sur le terrain.",
     icon: <ShieldCheck className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
   {
     title: "Sécurité et professionnalisme",
-    text: "Nos arboriculteurs suivent des protocoles de sécurité stricts et utilisent des équipements certifiés pour garantir un travail exemplaire et sécuritaire.",
+    text: "Nos arboriculteurs appliquent des protocoles rigoureux et utilisent un équipement certifié pour assurer un travail exemplaire, précis et sécuritaire.",
     icon: <HardHat className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
   {
     title: "Satisfaction garantie",
-    text: "Nous tenons nos engagements : ponctualité, propreté du site et résultats à la hauteur de vos attentes — c’est notre promesse Arbro.",
+    text: "Nous tenons nos engagements : ponctualité, propreté du site et résultats impeccables. Votre tranquillité d’esprit est notre priorité.",
     icon: <ThumbsUp className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
 ];
@@ -29,7 +30,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 },
+    transition: { staggerChildren: 0.25 },
   },
 };
 
@@ -48,8 +49,9 @@ function Guarantees() {
   return (
     <section
       id="garanties"
-      className="bg-[#f8faf9] py-24 md:py-28 overflow-hidden relative"
+      className="relative overflow-hidden bg-[#f8faf9] py-24 md:py-28"
     >
+      {/* HEADER */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -64,18 +66,20 @@ function Guarantees() {
           Notre engagement envers la qualité et la confiance
         </h3>
         <p className="max-w-2xl mx-auto text-[15px] text-slate-600 mb-12 leading-relaxed">
-          Chez <span className="font-semibold text-emerald-700">C&T Arbro</span>, la
-          sécurité, la rigueur et le professionnalisme sont au cœur de chacune de nos
-          interventions. Nos garanties témoignent de notre engagement envers la
-          satisfaction et la tranquillité d’esprit de chaque client.
+          Chez <span className="font-semibold text-emerald-700">C&T Arbro</span>,
+          la sécurité, la rigueur et le professionnalisme sont au cœur de
+          chacune de nos interventions. Nos garanties reflètent notre engagement
+          envers un service durable, sécuritaire et respectueux de votre
+          environnement.
         </p>
       </motion.div>
 
+      {/* CARTES GARANTIES */}
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.25 }}
         className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 md:grid-cols-3 md:px-8"
       >
         {GUARANTEES.map((g, i) => (
@@ -83,11 +87,11 @@ function Guarantees() {
             key={i}
             variants={item}
             whileHover={{
-              y: -8,
+              y: -6,
               scale: 1.03,
               transition: { duration: 0.25, ease: "easeOut" },
             }}
-            className="group rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl p-8 text-center transition-all duration-300 hover:border-emerald-500/40"
+            className="group rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl p-8 text-center transition-all duration-300 hover:border-emerald-500/40"
           >
             <div className="flex justify-center mb-5">{g.icon}</div>
             <h4 className="text-lg font-semibold text-slate-900 mb-2">
@@ -99,6 +103,9 @@ function Guarantees() {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* LIGNE DOUCE DE TRANSITION */}
+      <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f8faf9]/50 to-[#eef5f3] pointer-events-none" />
     </section>
   );
 }

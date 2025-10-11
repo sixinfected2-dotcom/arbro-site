@@ -1,13 +1,12 @@
-// src/components/Footer.jsx
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
-import logo from "./assets/logo.png";
-import facebook from "./assets/facebook.png";
-import google from "./assets/google.png";
+import logo from "../assets/optimized/logo.webp";
+import facebook from "../assets/optimized/facebook.webp";
+import google from "../assets/optimized/google.webp";
 
 /* =========================================================================
-   Footer — version haut de gamme & cohérente avec tout le site
+   Footer — version finale : fond fusionné + cohérence avec tout le site
 ============================================================================ */
 
 export default function Footer() {
@@ -30,24 +29,32 @@ export default function Footer() {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className={`relative bg-gradient-to-b from-[#0b0b0b] to-black text-gray-300 py-16 px-6 md:px-16 transition-[box-shadow] duration-700 ${
+      className={`relative bg-gradient-to-t from-black via-[#0b0b0b] to-[#0b0b0b] text-gray-300 py-16 px-6 md:px-16 overflow-hidden transition-[box-shadow] duration-700 ${
         highlight ? "shadow-[0_0_45px_#16a34a55]" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12">
+      {/* Lien fondu vers section précédente (supprime le blanc visible) */}
+      <div className="absolute top-0 left-0 w-full h-[120px] bg-gradient-to-t from-black via-[#0b0b0b] to-transparent pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 relative z-10">
         {/* LOGO + DESCRIPTION */}
         <div className="md:col-span-2">
           <img
             src={logo}
-            alt="C&T Arbro"
-            className="h-20 w-auto mb-4 drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]"
+            alt="C&T Arbro — Arboriculteurs à Magog et Sherbrooke"
+            loading="lazy"
+            decoding="async"
+            className="h-20 w-auto mb-4 drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)] blur-sm transition-all duration-700"
+            onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
           />
           <p className="text-sm leading-relaxed text-gray-400 max-w-sm">
-            Entreprise locale spécialisée en{" "}
-            <span className="text-white font-medium">élagage, abattage</span> et{" "}
-            <span className="text-white font-medium">entretien d’arbres</span>{" "}
-            à <strong>Magog</strong>, <strong>Sherbrooke</strong> et dans toute
-            l’<strong>Estrie</strong>.
+            <strong className="text-white">C&T Arbro</strong> —{" "}
+            <span className="text-emerald-400 font-medium">arboriculteurs certifiés</span>{" "}
+            à <strong>Magog</strong>, <strong>Sherbrooke</strong> et dans toute{" "}
+            <strong>l’Estrie</strong>. Experts en{" "}
+            <span className="text-white font-medium">élagage</span>,{" "}
+            <span className="text-white font-medium">abattage</span> et{" "}
+            <span className="text-white font-medium">entretien d’arbres</span>.
           </p>
 
           {/* Réseaux sociaux */}
@@ -61,18 +68,35 @@ export default function Footer() {
                 href="https://www.facebook.com/tonlienici"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Page Facebook de C&T Arbro"
                 className="hover:scale-110 transition-transform duration-300"
               >
-                <img src={facebook} alt="Facebook" className="h-9 w-9" />
+                <img
+                  src={facebook}
+                  alt="Facebook C&T Arbro"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-9 w-9 rounded-full blur-sm transition-all duration-700"
+                  onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
+                />
               </a>
+
               {/* Google Reviews */}
               <a
                 href="https://share.google/DiDwdpKmLmBViuMd6"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Lien Google Reviews C&T Arbro"
                 className="hover:scale-110 transition-transform duration-300"
               >
-                <img src={google} alt="Google Reviews" className="h-9 w-auto" />
+                <img
+                  src={google}
+                  alt="Avis Google C&T Arbro"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-9 w-auto blur-sm transition-all duration-700"
+                  onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
+                />
               </a>
             </div>
           </div>
@@ -123,7 +147,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* LIENS */}
+        {/* LIENS RAPIDES */}
         <div>
           <h3 className="text-white font-semibold text-lg mb-4">Navigation</h3>
           <ul className="space-y-2 text-sm">
@@ -152,7 +176,7 @@ export default function Footer() {
       </div>
 
       {/* BAS DE PAGE */}
-      <div className="mt-14 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+      <div className="mt-14 border-t border-gray-800 pt-6 text-center text-sm text-gray-500 relative z-10">
         <p>
           © 2025 <span className="text-white font-medium">C&T Arbro</span> — Tous
           droits réservés.
@@ -168,9 +192,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Lueur décorative */}
-      <div className="absolute -top-24 left-0 w-[300px] h-[300px] bg-emerald-500/20 blur-3xl rounded-full opacity-30" />
-      <div className="absolute -bottom-20 right-0 w-[260px] h-[260px] bg-emerald-600/20 blur-3xl rounded-full opacity-30" />
+      {/* Effets décoratifs */}
+      <div className="absolute -bottom-28 left-0 w-[320px] h-[320px] bg-emerald-500/15 blur-3xl rounded-full opacity-25" />
+      <div className="absolute -bottom-20 right-0 w-[260px] h-[260px] bg-emerald-600/15 blur-3xl rounded-full opacity-25" />
     </motion.footer>
   );
 }

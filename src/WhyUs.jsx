@@ -4,13 +4,13 @@ import { fadeUp } from "./Helpers";
 
 /* =========================================================================
    Pourquoi nous choisir — C&T Arbro
-   Version haut de gamme : élégance, lisibilité, homogénéité
+   Version premium : animations, stabilité, et fluidité entre sections
 ============================================================================ */
 
 const cards = [
   {
     title: "Sécurité garantie",
-    desc: "Chaque intervention est réalisée dans le respect des normes les plus strictes et couverte par notre assurance responsabilité professionnelle.",
+    desc: "Chaque intervention est réalisée selon les normes les plus strictes, assurée et conforme aux protocoles de sécurité professionnels.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -29,7 +29,7 @@ const cards = [
   },
   {
     title: "Travail propre & minutieux",
-    desc: "Nous laissons chaque chantier impeccable : démontage contrôlé, déchiquetage et nettoyage complet du site inclus.",
+    desc: "Nous laissons chaque chantier impeccable — démontage contrôlé, déchiquetage, ramassage et nettoyage complet inclus.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -44,7 +44,7 @@ const cards = [
   },
   {
     title: "Équipe qualifiée",
-    desc: "Des arboriculteurs expérimentés, passionnés par leur métier, formés aux meilleures techniques d’entretien et d’abattage.",
+    desc: "Des arboriculteurs certifiés, passionnés et expérimentés, formés aux meilleures techniques d’élagage et d’abattage en Estrie.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -63,7 +63,7 @@ const cards = [
   },
   {
     title: "Satisfaction locale",
-    desc: "Une réputation bâtie sur la confiance et la satisfaction de nos clients à Magog, Sherbrooke et dans toute l’Estrie.",
+    desc: "Une réputation bâtie sur la confiance et la satisfaction de nos clients à Magog, Sherbrooke et dans toute la région de l’Estrie.",
     Icon: () => (
       <svg viewBox="0 0 24 24" className="h-6 w-6">
         <path
@@ -86,10 +86,10 @@ function WhyUs() {
   return (
     <section
       id="pourquoi-nous"
-      className="bg-[#f7faf9] py-24 md:py-28 relative overflow-hidden"
+      className="relative overflow-hidden bg-[#f7faf9] py-24 md:py-28"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        {/* Header */}
+        {/* HEADER */}
         <motion.div
           {...fadeUp(0)}
           className="text-center max-w-2xl mx-auto mb-14"
@@ -103,18 +103,19 @@ function WhyUs() {
           <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
             Chez <span className="font-semibold text-emerald-700">C&T Arbro</span>,
             nous allions expertise, sécurité et respect de l’environnement pour
-            offrir un service professionnel et durable à chaque client.
+            garantir un service fiable, durable et adapté à chaque propriété.
           </p>
         </motion.div>
 
-        {/* Cards */}
+        {/* CARDS */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {cards.map(({ title, desc, Icon }, i) => (
             <motion.div
               key={title}
               {...fadeUp(0.05 + i * 0.05)}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all duration-300"
+              viewport={{ once: true }}
+              whileHover={{ y: -6, scale: 1.03 }}
+              className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:shadow-lg hover:border-emerald-500/40 transition-all duration-300"
             >
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100 shrink-0">
@@ -133,6 +134,9 @@ function WhyUs() {
           ))}
         </div>
       </div>
+
+      {/* Ligne de transition décorative vers Garanties */}
+      <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f6f8f9]/50 to-[#eef5f3] pointer-events-none" />
     </section>
   );
 }

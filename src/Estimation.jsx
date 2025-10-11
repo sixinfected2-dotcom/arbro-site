@@ -2,11 +2,11 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { fadeUp } from "./Helpers"; // ✅ on garde cohérence avec tes autres composants
-import { Phone, Mail, MapPin } from "lucide-react";
+import { fadeUp } from "./Helpers";
+import { Phone, Mail, MapPin, CheckCircle2 } from "lucide-react";
 
 /* =========================================================================
-   Section Estimation — Version haut de gamme professionnelle
+   Section Estimation — version haut de gamme, fluide et cohérente
 ============================================================================ */
 
 const SERVICES = [
@@ -33,6 +33,7 @@ function Field({ label, children }) {
 export default function Estimation() {
   const [selectedServices, setSelectedServices] = useState([]);
   const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
   const form = useRef();
 
   const toggleService = (service) => {
@@ -49,14 +50,15 @@ export default function Estimation() {
 
     emailjs
       .sendForm(
-        "service_ctarbro", // ✅ ID EmailJS
+        "service_ctarbro",
         "template_tyx1d78",
         form.current,
         "Sr1s56qOZX0nKDGrN"
       )
       .then(
         () => {
-          alert("✅ Merci ! Votre demande a bien été envoyée à C&T Arbro.");
+          setSent(true);
+          setTimeout(() => setSent(false), 4000);
           form.current.reset();
           setSelectedServices([]);
         },
@@ -94,8 +96,26 @@ export default function Estimation() {
           ref={form}
           {...fadeUp(0.1)}
           onSubmit={onSubmit}
-          className="mx-auto grid gap-10 rounded-3xl bg-white p-8 shadow-lg border border-slate-200 md:p-12 md:grid-cols-2"
+          className="mx-auto grid gap-10 rounded-3xl bg-white p-8 shadow-lg border border-slate-200 md:p-12 md:grid-cols-2 relative"
         >
+          {/* Message de succès */}
+          {sent && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm rounded-3xl z-20"
+            >
+              <CheckCircle2 className="h-12 w-12 text-emerald-600 mb-3" />
+              <p className="text-lg font-semibold text-emerald-700">
+                Merci ! Votre demande a été envoyée.
+              </p>
+              <p className="text-slate-600 text-sm mt-1">
+                Nous vous contacterons très bientôt.
+              </p>
+            </motion.div>
+          )}
+
           {/* Colonne gauche */}
           <div className="space-y-6">
             <Field label="Nom complet">
@@ -154,9 +174,7 @@ export default function Estimation() {
                       onChange={() => toggleService(service)}
                       className="h-4 w-4 accent-emerald-600"
                     />
-                    <span className="text-[15px] text-slate-700">
-                      {service}
-                    </span>
+                    <span className="text-[15px] text-slate-700">{service}</span>
                   </label>
                 ))}
               </div>
@@ -214,10 +232,10 @@ export default function Estimation() {
               <Phone className="h-4 w-4" /> (819) 843-3101
             </a>
             <a
-              href="mailto:info@ctarbro.com"
+              href="mailto:info@ctarbro.ca"
               className="flex items-center gap-2 hover:text-emerald-600 transition"
             >
-              <Mail className="h-4 w-4" /> info@ctarbro.com
+              <Mail className="h-4 w-4" /> info@ctarbro.ca
             </a>
             <span className="flex items-center gap-2">
               <MapPin className="h-4 w-4" /> Magog, Estrie
@@ -226,9 +244,10 @@ export default function Estimation() {
         </motion.div>
       </div>
 
-      {/* Effets décoratifs */}
+      {/* Effets décoratifs + ligne transition vers footer */}
       <div className="absolute -top-24 left-0 w-[320px] h-[320px] bg-emerald-100/40 blur-3xl rounded-full opacity-40" />
       <div className="absolute -bottom-20 right-0 w-[280px] h-[280px] bg-emerald-200/30 blur-3xl rounded-full opacity-40" />
+      <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f8faf9]/50 to-black/90 pointer-events-none" />
     </section>
   );
 }
