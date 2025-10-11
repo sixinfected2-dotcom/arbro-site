@@ -1,6 +1,5 @@
 import React from "react";
 import AppRoot from "./AppRoot";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /* =========================================================================
    App.jsx — Point d’entrée principal de l’application
