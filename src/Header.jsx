@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { smoothTo } from "./Helpers"; 
+import { smoothTo } from "./Helpers";
 import logo from "./assets/logo.png";
 
 /* =========================================================================
-   Header — Version premium finale (fluidité + ancrages précis + compatibilité mobile)
+   Header — Version premium finale (ajout "Pourquoi nous ?" + compatibilité mobile)
 ============================================================================ */
 export default function Header() {
   const [hidden, setHidden] = useState(false);
@@ -45,10 +45,11 @@ export default function Header() {
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  // Menu de navigation
+  // Menu de navigation (avec ajout "Pourquoi nous ?")
   const nav = useMemo(
     () => [
       { label: "Services", hash: "#services" },
+      { label: "Pourquoi nous ?", hash: "#whyus" }, // 🆕 ajouté ici
       { label: "Territoire", hash: "#territoire" },
       { label: "Galerie", hash: "#galerie" },
       { label: "Avis", hash: "#avis" },
@@ -81,9 +82,15 @@ export default function Header() {
         {/* Bande verte haute */}
         <div className="bg-[#1B4332] text-white text-sm py-1 px-4 flex justify-between items-center">
           <span>C&T Arbro — Élagage & Abattage d’arbres · Estrie</span>
-          <a href="tel:8195550131" className="font-semibold hover:underline">
-            (819) 555-0131
-          </a>
+          <div className="flex gap-4">
+            <a href="tel:8198433101" className="font-semibold hover:underline">
+              (819) 843-3101
+            </a>
+            <span className="text-white/60">•</span>
+            <a href="tel:8194372104" className="font-semibold hover:underline">
+              (819) 437-2104
+            </a>
+          </div>
         </div>
 
         {/* Barre principale */}
@@ -140,7 +147,7 @@ export default function Header() {
                 <motion.a
                   whileHover={{ scale: 1.07 }}
                   whileTap={{ scale: 0.96 }}
-                  href="tel:8195550131"
+                  href="tel:8198433101"
                   className="rounded-xl bg-[#1B4332] px-5 py-2 text-[15px] font-semibold text-white shadow-sm hover:bg-[#163627] transition"
                 >
                   Appeler
@@ -212,6 +219,20 @@ export default function Header() {
                         </a>
                       </li>
                     ))}
+                    <li className="border-t border-slate-200 pt-2 mt-2">
+                      <a
+                        href="tel:8198433101"
+                        className="block rounded-lg px-3 py-2 font-semibold text-emerald-700 hover:bg-slate-50"
+                      >
+                        (819) 843-3101
+                      </a>
+                      <a
+                        href="tel:8194372104"
+                        className="block rounded-lg px-3 py-2 font-semibold text-emerald-700 hover:bg-slate-50"
+                      >
+                        (819) 437-2104
+                      </a>
+                    </li>
                   </ul>
                 </motion.div>
               )}

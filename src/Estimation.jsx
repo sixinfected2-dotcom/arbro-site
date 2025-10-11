@@ -1,3 +1,4 @@
+// src/Estimation.jsx
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -10,15 +11,13 @@ const SERVICES = [
   "Taille de haies",
   "Dessouchage / Essouchage d’arbres",
   "Haubanage",
-  "Autre service"
+  "Autre service",
 ];
 
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-[14px] font-semibold text-slate-700">
-        {label}
-      </span>
+      <span className="mb-2 block text-[14px] font-semibold text-slate-700">{label}</span>
       {children}
     </label>
   );
@@ -41,31 +40,25 @@ function Estimator() {
     e.preventDefault();
     setSending(true);
 
-    try {
-      const fd = new FormData(form.current);
-      console.log("🟢 Données envoyées à EmailJS :", Object.fromEntries(fd.entries()));
-    } catch {}
-
     emailjs
       .sendForm(
-        "service_ctarbro",      // ✅ Service ID
-        "template_tyx1d78",     // ✅ Template ID (Contact Us)
+        "service_ctarbro", // ✅ Ton ID de service
+        "template_tyx1d78", // ✅ Template EmailJS
         form.current,
-        "Sr1s56qOZX0nKDGrN"     // ✅ Public Key
+        "Sr1s56qOZX0nKDGrN" // ✅ Clé publique
       )
       .then(
         () => {
-          alert("✅ Merci ! Votre demande a bien été envoyée.");
+          alert("✅ Merci ! Votre demande a bien été envoyée à C&T Arbro.");
           form.current.reset();
           setSelectedServices([]);
-          setSending(false);
         },
         (error) => {
           console.error("❌ Erreur EmailJS :", error);
-          alert("Une erreur est survenue, veuillez réessayer.");
-          setSending(false);
+          alert("Une erreur est survenue. Veuillez réessayer.");
         }
-      );
+      )
+      .finally(() => setSending(false));
   };
 
   return (
@@ -128,7 +121,7 @@ function Estimator() {
                 name="phone"
                 type="tel"
                 required
-                placeholder="Ex: 819-555-0131"
+                placeholder="Ex: 819-843-3101 ou 819-437-2104"
                 className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-3 text-[15px] focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition-all"
               />
             </Field>
@@ -178,7 +171,9 @@ function Estimator() {
               disabled={sending}
               type="submit"
               className={`rounded-xl px-10 py-3 text-[16px] font-semibold text-white shadow-md transition-colors ${
-                sending ? "bg-emerald-400 cursor-not-allowed" : "bg-emerald-600 hover:bg-emerald-700"
+                sending
+                  ? "bg-emerald-400 cursor-not-allowed"
+                  : "bg-emerald-600 hover:bg-emerald-700"
               }`}
             >
               {sending ? "Envoi en cours..." : "Envoyer la demande"}

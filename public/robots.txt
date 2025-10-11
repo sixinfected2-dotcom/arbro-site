@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Empêche l’indexation des dossiers internes de build
+Disallow: /node_modules/
+Disallow: /src/
+
+# Localisation du sitemap
+Sitemap: https://arbro-site-p2cg.vercel.app/sitemap.xml

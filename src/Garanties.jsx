@@ -1,9 +1,9 @@
-// src/Guarantees.jsx
+// src/Garanties.jsx
 import { motion } from "framer-motion";
 import { ShieldCheck, HardHat, ThumbsUp } from "lucide-react";
 
 /* =========================================================================
-   Garanties
+   Garanties — Version sans CNESST
 ============================================================================ */
 const GUARANTEES = [
   {
@@ -12,8 +12,8 @@ const GUARANTEES = [
     icon: <ShieldCheck className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
   {
-    title: "Normes de sécurité CNESST",
-    text: "Nos équipes respectent rigoureusement les protocoles CNESST et les normes de sécurité les plus strictes du domaine.",
+    title: "Sécurité et professionnalisme",
+    text: "Nos équipes travaillent selon des protocoles de sécurité rigoureux et des pratiques professionnelles reconnues pour garantir des interventions sécuritaires.",
     icon: <HardHat className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
   },
   {
@@ -28,24 +28,24 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
 // Animation enfant
 const item = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 function Guarantees() {
   return (
-    <section
-      id="garanties"
-      className="bg-[#f8faf9] py-20 md:py-24 overflow-hidden"
-    >
+    <section id="garanties" className="bg-[#f8faf9] py-20 md:py-24 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,9 +60,9 @@ function Guarantees() {
           Notre engagement envers votre sécurité
         </h3>
         <p className="max-w-2xl mx-auto text-[15px] text-slate-600 mb-12 leading-relaxed">
-          Chez C&T Arbro, la sécurité et la qualité sont au cœur de chaque
-          intervention. Nous nous engageons à offrir un service irréprochable,
-          respectant les normes les plus strictes du domaine.
+          Chez C&T Arbro, la sécurité, la rigueur et la qualité sont au cœur de chaque
+          intervention. Nous nous engageons à offrir un service irréprochable, 
+          réalisé par des professionnels qualifiés et soucieux de votre satisfaction.
         </p>
       </motion.div>
 
@@ -77,20 +77,12 @@ function Guarantees() {
           <motion.div
             key={i}
             variants={item}
-            whileHover={{
-              y: -6,
-              scale: 1.03,
-              transition: { duration: 0.25 },
-            }}
+            whileHover={{ y: -6, scale: 1.03, transition: { duration: 0.25 } }}
             className="group rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-2xl p-8 text-center transition-all duration-300"
           >
             <div className="flex justify-center mb-5">{g.icon}</div>
-            <h4 className="text-lg font-semibold text-slate-900 mb-2">
-              {g.title}
-            </h4>
-            <p className="text-[15px] text-slate-600 leading-relaxed">
-              {g.text}
-            </p>
+            <h4 className="text-lg font-semibold text-slate-900 mb-2">{g.title}</h4>
+            <p className="text-[15px] text-slate-600 leading-relaxed">{g.text}</p>
           </motion.div>
         ))}
       </motion.div>

@@ -1,0 +1,16 @@
+{
+  "name": "C&T Arbro",
+  "short_name": "C&T Arbro",
+  "description": "Élagage, abattage et entretien d’arbres à Magog, Sherbrooke et partout en Estrie.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1B4332",
+  "theme_color": "#1B4332",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
