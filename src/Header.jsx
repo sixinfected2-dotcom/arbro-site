@@ -4,7 +4,7 @@ import { smoothTo } from "./Helpers";
 import logo from "./assets/logo.png";
 
 /* =========================================================================
-   Header — Version premium finale (ajout "Pourquoi nous ?" + compatibilité mobile)
+   Header — Version finale (pro, sans "Pourquoi nous ?", top bar raffinée)
 ============================================================================ */
 export default function Header() {
   const [hidden, setHidden] = useState(false);
@@ -13,7 +13,7 @@ export default function Header() {
   const [shadow, setShadow] = useState(false);
   const lastY = useRef(0);
 
-  // Gestion du scroll et du shrink
+  // Gestion du scroll
   useEffect(() => {
     lastY.current = window.scrollY;
 
@@ -36,7 +36,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [open]);
 
-  // Réapparition du header si la souris remonte
+  // Réapparition si la souris remonte
   useEffect(() => {
     const onMove = (e) => {
       if (e.clientY < 10) setHidden(false);
@@ -45,11 +45,10 @@ export default function Header() {
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  // Menu de navigation (avec ajout "Pourquoi nous ?")
+  // Menu de navigation
   const nav = useMemo(
     () => [
       { label: "Services", hash: "#services" },
-      { label: "Pourquoi nous ?", hash: "#whyus" }, // 🆕 ajouté ici
       { label: "Territoire", hash: "#territoire" },
       { label: "Galerie", hash: "#galerie" },
       { label: "Avis", hash: "#avis" },
@@ -79,18 +78,17 @@ export default function Header() {
         }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200"
       >
-        {/* Bande verte haute */}
-        <div className="bg-[#1B4332] text-white text-sm py-1 px-4 flex justify-between items-center">
-          <span>C&T Arbro — Élagage & Abattage d’arbres · Estrie</span>
-          <div className="flex gap-4">
-            <a href="tel:8198433101" className="font-semibold hover:underline">
-              (819) 843-3101
-            </a>
-            <span className="text-white/60">•</span>
-            <a href="tel:8194372104" className="font-semibold hover:underline">
-              (819) 437-2104
-            </a>
-          </div>
+        {/* Bande verte haute — version épurée et professionnelle */}
+        <div className="bg-[#164C33] text-white text-[15px] tracking-wide py-[6px] px-6 flex justify-between items-center border-b border-[#123927] shadow-sm">
+          <span className="font-medium text-white/90">
+            <strong className="font-semibold text-white">C&T Arbro</strong> — Élagage & Abattage d’arbres
+          </span>
+          <a
+            href="tel:8198433101"
+            className="font-semibold text-white hover:text-emerald-200 transition-all duration-200"
+          >
+            (819) 843-3101
+          </a>
         </div>
 
         {/* Barre principale */}
@@ -117,7 +115,7 @@ export default function Header() {
               </button>
 
               {/* Navigation Desktop */}
-              <ul className="hidden md:flex items-center gap-10 text-[15.5px] text-slate-800 font-medium">
+              <ul className="hidden md:flex items-center gap-9 text-[15.5px] text-slate-800 font-medium">
                 {nav.map((n, i) => (
                   <li
                     key={i}
@@ -193,7 +191,7 @@ export default function Header() {
               </button>
             </nav>
 
-            {/* Drawer mobile animé */}
+            {/* Drawer mobile */}
             <AnimatePresence>
               {open && (
                 <motion.div
@@ -241,7 +239,7 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Ajustement d’espacement pour header fixe */}
+      {/* Espace compensatoire */}
       <div className="h-[108px] md:h-[116px]" />
     </>
   );
