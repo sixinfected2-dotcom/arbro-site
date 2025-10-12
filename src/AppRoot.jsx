@@ -35,9 +35,10 @@ const sectionFade = {
 export default function AppRoot() {
   return (
     <div
-      id="top"
-      className="min-h-screen scroll-smooth bg-[#f6f8f9] text-slate-800 selection:bg-emerald-200/60 overflow-x-hidden"
-    >
+  id="top"
+  className="min-h-screen scroll-smooth bg-gradient-to-b from-[#f6f8f9] via-[#e7ebe9] to-[#0b0b0b] text-slate-800 selection:bg-emerald-200/60 overflow-x-hidden"
+>
+
       {/* HEADER GLOBAL */}
       <Header />
 

@@ -1,7 +1,8 @@
 // src/About.jsx
 import { motion } from "framer-motion";
 import { fadeUp } from "./Helpers";
-import heroImage from "./assets/camion.webp";
+import heroImage from "./assets/optimized/camion.webp";
+
 
 /* =========================================================================
    À propos — version finale : fluide, humaine, et hautement professionnelle

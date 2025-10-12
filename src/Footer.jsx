@@ -1,12 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
-import logo from "../assets/optimized/logo.webp";
-import facebook from "../assets/optimized/facebook.webp";
-import google from "../assets/optimized/google.webp";
+import logo from "./assets/optimized/logo.webp";
+import facebook from "./assets/optimized/facebook.webp";
+import google from "./assets/optimized/google.webp";
 
 /* =========================================================================
-   Footer — version finale : fond fusionné + cohérence avec tout le site
+   Footer — version finale ultra stable (aucun dégradé, aucune marge)
 ============================================================================ */
 
 export default function Footer() {
@@ -29,13 +29,10 @@ export default function Footer() {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className={`relative bg-gradient-to-t from-black via-[#0b0b0b] to-[#0b0b0b] text-gray-300 py-16 px-6 md:px-16 overflow-hidden transition-[box-shadow] duration-700 ${
+      className={`relative z-[10] w-full bg-[#0b0b0b] text-gray-300 py-20 px-6 md:px-16 overflow-hidden transition-[box-shadow] duration-700 ${
         highlight ? "shadow-[0_0_45px_#16a34a55]" : ""
       }`}
     >
-      {/* Lien fondu vers section précédente (supprime le blanc visible) */}
-      <div className="absolute top-0 left-0 w-full h-[120px] bg-gradient-to-t from-black via-[#0b0b0b] to-transparent pointer-events-none" />
-
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 relative z-10">
         {/* LOGO + DESCRIPTION */}
         <div className="md:col-span-2">
@@ -63,7 +60,6 @@ export default function Footer() {
               Suivez-nous
             </h3>
             <div className="flex space-x-6">
-              {/* Facebook */}
               <a
                 href="https://www.facebook.com/tonlienici"
                 target="_blank"
@@ -80,8 +76,6 @@ export default function Footer() {
                   onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
                 />
               </a>
-
-              {/* Google Reviews */}
               <a
                 href="https://share.google/DiDwdpKmLmBViuMd6"
                 target="_blank"
@@ -192,9 +186,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Effets décoratifs */}
-      <div className="absolute -bottom-28 left-0 w-[320px] h-[320px] bg-emerald-500/15 blur-3xl rounded-full opacity-25" />
-      <div className="absolute -bottom-20 right-0 w-[260px] h-[260px] bg-emerald-600/15 blur-3xl rounded-full opacity-25" />
+      {/* Effets décoratifs subtils */}
+      <div className="absolute -bottom-16 left-0 w-[300px] h-[300px] bg-emerald-500/10 blur-3xl rounded-full opacity-20" />
+      <div className="absolute -bottom-12 right-0 w-[260px] h-[260px] bg-emerald-600/10 blur-3xl rounded-full opacity-20" />
     </motion.footer>
   );
 }

@@ -1,4 +1,3 @@
-// src/Estimation.jsx
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -6,7 +5,7 @@ import { fadeUp } from "./Helpers";
 import { Phone, Mail, MapPin, CheckCircle2 } from "lucide-react";
 
 /* =========================================================================
-   Section Estimation — version haut de gamme, fluide et cohérente
+   Section Estimation — version finale (fond blanc, checkboxes natives vertes)
 ============================================================================ */
 
 const SERVICES = [
@@ -47,7 +46,6 @@ export default function Estimation() {
   const onSubmit = (e) => {
     e.preventDefault();
     setSending(true);
-
     emailjs
       .sendForm(
         "service_ctarbro",
@@ -172,9 +170,11 @@ export default function Estimation() {
                       type="checkbox"
                       checked={selectedServices.includes(service)}
                       onChange={() => toggleService(service)}
-                      className="h-4 w-4 accent-emerald-600"
+                      className="h-4 w-4 border border-slate-400 rounded-sm bg-white accent-emerald-600 cursor-pointer transition-all duration-200"
                     />
-                    <span className="text-[15px] text-slate-700">{service}</span>
+                    <span className="text-[15px] text-slate-700">
+                      {service}
+                    </span>
                   </label>
                 ))}
               </div>
@@ -244,10 +244,9 @@ export default function Estimation() {
         </motion.div>
       </div>
 
-      {/* Effets décoratifs + ligne transition vers footer */}
-      <div className="absolute -top-24 left-0 w-[320px] h-[320px] bg-emerald-100/40 blur-3xl rounded-full opacity-40" />
-      <div className="absolute -bottom-20 right-0 w-[280px] h-[280px] bg-emerald-200/30 blur-3xl rounded-full opacity-40" />
-      <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f8faf9]/50 to-black/90 pointer-events-none" />
+      {/* Effets décoratifs (sans débordement sur le footer) */}
+      <div className="absolute -top-24 left-0 w-[320px] h-[320px] bg-emerald-100/40 blur-3xl rounded-full opacity-40 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[280px] h-[280px] bg-emerald-200/20 blur-3xl rounded-full opacity-30 pointer-events-none" />
     </section>
   );
 }
