@@ -234,7 +234,7 @@ export default function Estimation() {
               <Phone className="h-4 w-4" aria-hidden="true" /> (819) 843-3101
             </a>
             <a
-              href="mailto:info@ctarbro.ca"
+              href="mailto:ctarbro@gmail.com"
               className="flex items-center gap-2 hover:text-emerald-600 transition"
             >
               <Mail className="h-4 w-4" aria-hidden="true" /> info@ctarbro.ca

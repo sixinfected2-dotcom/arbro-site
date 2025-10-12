@@ -130,7 +130,7 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-emerald-400" />
               <a
-                href="mailto:info@ctarbro.ca"
+                href="mailto:ctarbro@gmail.com"
                 className="hover:text-emerald-400 transition"
               >
                 info@ctarbro.ca
