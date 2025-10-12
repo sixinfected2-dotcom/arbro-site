@@ -5,7 +5,7 @@ import { fadeUp } from "./Helpers";
 import { Phone, Mail, MapPin, CheckCircle2 } from "lucide-react";
 
 /* =========================================================================
-   Section Estimation — version finale (fond blanc, checkboxes natives vertes)
+   Estimation — version optimisée : accessibilité, UX, sécurité et performances
 ============================================================================ */
 
 const SERVICES = [
@@ -46,6 +46,7 @@ export default function Estimation() {
   const onSubmit = (e) => {
     e.preventDefault();
     setSending(true);
+
     emailjs
       .sendForm(
         "service_ctarbro",
@@ -72,11 +73,13 @@ export default function Estimation() {
     <section
       id="estimation"
       className="relative bg-[#f8faf9] py-24 md:py-28 overflow-hidden"
+      aria-labelledby="titre-estimation"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         {/* TITRES */}
         <motion.h2
           {...fadeUp(0)}
+          id="titre-estimation"
           className="text-sm font-semibold uppercase tracking-widest text-emerald-700 text-center"
         >
           Estimation gratuite
@@ -94,15 +97,17 @@ export default function Estimation() {
           ref={form}
           {...fadeUp(0.1)}
           onSubmit={onSubmit}
+          aria-label="Formulaire d'estimation arboricole"
           className="mx-auto grid gap-10 rounded-3xl bg-white p-8 shadow-lg border border-slate-200 md:p-12 md:grid-cols-2 relative"
         >
-          {/* Message de succès */}
+          {/* MESSAGE DE SUCCÈS */}
           {sent && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm rounded-3xl z-20"
+              role="status"
+              className="absolute inset-0 flex flex-col items-center justify-center bg-white/95 backdrop-blur-sm rounded-3xl z-20"
             >
               <CheckCircle2 className="h-12 w-12 text-emerald-600 mb-3" />
               <p className="text-lg font-semibold text-emerald-700">
@@ -114,12 +119,13 @@ export default function Estimation() {
             </motion.div>
           )}
 
-          {/* Colonne gauche */}
+          {/* COLONNE GAUCHE */}
           <div className="space-y-6">
             <Field label="Nom complet">
               <input
                 name="name"
                 type="text"
+                autoComplete="name"
                 required
                 placeholder="Ex : Jean Tremblay"
                 className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-[15px] focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition-all"
@@ -130,6 +136,7 @@ export default function Estimation() {
               <input
                 name="email"
                 type="email"
+                autoComplete="email"
                 required
                 placeholder="exemple@email.com"
                 className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-[15px] focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition-all"
@@ -140,6 +147,7 @@ export default function Estimation() {
               <input
                 name="address"
                 type="text"
+                autoComplete="street-address"
                 required
                 placeholder="Ex : 123 Rue Principale, Magog"
                 className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-[15px] focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition-all"
@@ -150,6 +158,8 @@ export default function Estimation() {
               <input
                 name="phone"
                 type="tel"
+                inputMode="tel"
+                pattern="[0-9\- ]+"
                 required
                 placeholder="Ex : 819-843-3101"
                 className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-[15px] focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition-all"
@@ -157,7 +167,7 @@ export default function Estimation() {
             </Field>
           </div>
 
-          {/* Colonne droite */}
+          {/* COLONNE DROITE */}
           <div className="space-y-6">
             <Field label="Le service qui vous intéresse">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -168,6 +178,8 @@ export default function Estimation() {
                   >
                     <input
                       type="checkbox"
+                      name="services"
+                      value={service}
                       checked={selectedServices.includes(service)}
                       onChange={() => toggleService(service)}
                       className="h-4 w-4 border border-slate-400 rounded-sm bg-white accent-emerald-600 cursor-pointer transition-all duration-200"
@@ -180,14 +192,6 @@ export default function Estimation() {
               </div>
             </Field>
 
-            {/* Champ caché */}
-            <input
-              type="hidden"
-              name="services"
-              value={selectedServices.join(", ")}
-              readOnly
-            />
-
             <Field label="Détails supplémentaires">
               <textarea
                 name="details"
@@ -198,11 +202,11 @@ export default function Estimation() {
             </Field>
           </div>
 
-          {/* Bouton */}
+          {/* BOUTON ENVOI */}
           <div className="md:col-span-2 mt-6 text-center">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: !sending ? 1.05 : 1 }}
+              whileTap={{ scale: !sending ? 0.97 : 1 }}
               disabled={sending}
               type="submit"
               className={`rounded-xl px-10 py-3.5 text-[16px] font-semibold text-white shadow-md transition-all duration-300 ${
@@ -216,35 +220,33 @@ export default function Estimation() {
           </div>
         </motion.form>
 
-        {/* Bloc contact direct */}
+        {/* COORDONNÉES DIRECTES */}
         <motion.div
           {...fadeUp(0.2)}
           className="mt-12 text-center text-slate-600 text-[15px] space-y-3"
         >
-          <p className="font-medium">
-            Vous préférez nous contacter directement ?
-          </p>
+          <p className="font-medium">Vous préférez nous contacter directement ?</p>
           <div className="flex flex-wrap justify-center gap-6 text-slate-700 font-medium">
             <a
               href="tel:8198433101"
               className="flex items-center gap-2 hover:text-emerald-600 transition"
             >
-              <Phone className="h-4 w-4" /> (819) 843-3101
+              <Phone className="h-4 w-4" aria-hidden="true" /> (819) 843-3101
             </a>
             <a
               href="mailto:info@ctarbro.ca"
               className="flex items-center gap-2 hover:text-emerald-600 transition"
             >
-              <Mail className="h-4 w-4" /> info@ctarbro.ca
+              <Mail className="h-4 w-4" aria-hidden="true" /> info@ctarbro.ca
             </a>
             <span className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" /> Magog, Estrie
+              <MapPin className="h-4 w-4" aria-hidden="true" /> Magog, Estrie
             </span>
           </div>
         </motion.div>
       </div>
 
-      {/* Effets décoratifs (sans débordement sur le footer) */}
+      {/* EFFETS DÉCORATIFS */}
       <div className="absolute -top-24 left-0 w-[320px] h-[320px] bg-emerald-100/40 blur-3xl rounded-full opacity-40 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[280px] h-[280px] bg-emerald-200/20 blur-3xl rounded-full opacity-30 pointer-events-none" />
     </section>

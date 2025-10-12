@@ -1,27 +1,26 @@
-// src/Garanties.jsx
 import { motion } from "framer-motion";
 import { ShieldCheck, HardHat, ThumbsUp } from "lucide-react";
 
 /* =========================================================================
    Garanties — C&T Arbro
-   Version finale : fluidité, cohérence visuelle, SEO local & professionnalisme
+   Version optimisée : cohérence visuelle, accessibilité, SEO local & stabilité CLS
 ============================================================================ */
 
 const GUARANTEES = [
   {
     title: "Assurance responsabilité",
     text: "Chaque intervention est couverte par une assurance responsabilité professionnelle complète, garantissant votre sécurité et celle de nos équipes sur le terrain.",
-    icon: <ShieldCheck className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
+    icon: <ShieldCheck className="h-11 w-11 text-emerald-600 drop-shadow-sm" aria-hidden="true" />,
   },
   {
     title: "Sécurité et professionnalisme",
-    text: "Nos arboriculteurs appliquent des protocoles rigoureux et utilisent un équipement certifié pour assurer un travail exemplaire, précis et sécuritaire.",
-    icon: <HardHat className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
+    text: "Nos arboriculteurs appliquent des protocoles rigoureux et utilisent un équipement certifié pour assurer un travail exemplaire, précis et sécuritaire à Magog et partout en Estrie.",
+    icon: <HardHat className="h-11 w-11 text-emerald-600 drop-shadow-sm" aria-hidden="true" />,
   },
   {
     title: "Satisfaction garantie",
-    text: "Nous tenons nos engagements : ponctualité, propreté du site et résultats impeccables. Votre tranquillité d’esprit est notre priorité.",
-    icon: <ThumbsUp className="h-11 w-11 text-emerald-600 drop-shadow-sm" />,
+    text: "Nous tenons nos engagements : ponctualité, propreté du site et résultats impeccables. Votre tranquillité d’esprit est notre priorité absolue.",
+    icon: <ThumbsUp className="h-11 w-11 text-emerald-600 drop-shadow-sm" aria-hidden="true" />,
   },
 ];
 
@@ -45,7 +44,7 @@ const item = {
   },
 };
 
-function Guarantees() {
+export default function Guarantees() {
   return (
     <section
       id="garanties"
@@ -68,7 +67,7 @@ function Guarantees() {
         <p className="max-w-2xl mx-auto text-[15px] text-slate-600 mb-12 leading-relaxed">
           Chez <span className="font-semibold text-emerald-700">C&T Arbro</span>,
           la sécurité, la rigueur et le professionnalisme sont au cœur de
-          chacune de nos interventions. Nos garanties reflètent notre engagement
+          chacune de nos interventions. Ces garanties reflètent notre engagement
           envers un service durable, sécuritaire et respectueux de votre
           environnement.
         </p>
@@ -106,8 +105,10 @@ function Guarantees() {
 
       {/* LIGNE DOUCE DE TRANSITION */}
       <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f8faf9]/50 to-[#eef5f3] pointer-events-none" />
+
+      {/* Décors légers */}
+      <div className="absolute -top-24 right-0 w-[320px] h-[320px] bg-emerald-100/40 blur-3xl rounded-full opacity-40" />
+      <div className="absolute -bottom-20 left-0 w-[280px] h-[280px] bg-emerald-200/30 blur-3xl rounded-full opacity-40" />
     </section>
   );
 }
-
-export default Guarantees;

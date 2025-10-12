@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { smoothTo } from "./Helpers";
-import logo from "./assets/logo.png";
+import logo from "./assets/optimized/logo.webp";
 
 /* =========================================================================
-   Header — Version finale (pro, sans "Pourquoi nous ?", top bar raffinée)
+   Header — version optimisée (logo WebP, accessibilité, SEO local)
 ============================================================================ */
 export default function Header() {
   const [hidden, setHidden] = useState(false);
@@ -13,7 +13,7 @@ export default function Header() {
   const [shadow, setShadow] = useState(false);
   const lastY = useRef(0);
 
-  // Gestion du scroll
+  // Gestion du scroll (réduction + disparition)
   useEffect(() => {
     lastY.current = window.scrollY;
 
@@ -36,7 +36,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [open]);
 
-  // Réapparition si la souris remonte
+  // Réapparition si la souris monte vers le haut
   useEffect(() => {
     const onMove = (e) => {
       if (e.clientY < 10) setHidden(false);
@@ -45,7 +45,7 @@ export default function Header() {
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  // Menu de navigation
+  // Menu principal
   const nav = useMemo(
     () => [
       { label: "Services", hash: "#services" },
@@ -77,11 +77,12 @@ export default function Header() {
           mass: 0.7,
         }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200"
+        role="banner"
       >
-        {/* Bande verte haute — version épurée et professionnelle */}
+        {/* Bande supérieure */}
         <div className="bg-[#164C33] text-white text-[15px] tracking-wide py-[6px] px-6 flex justify-between items-center border-b border-[#123927] shadow-sm">
           <span className="font-medium text-white/90">
-            <strong className="font-semibold text-white">C&T Arbro</strong> — Élagage & Abattage d’arbres
+            <strong className="font-semibold text-white">C&T Arbro</strong> — Élagage & Abattage d’arbres à Magog et Sherbrooke
           </span>
           <a
             href="tel:8198433101"
@@ -98,19 +99,25 @@ export default function Header() {
               className={`flex items-center justify-between transition-all duration-300 ${
                 shrink ? "h-16" : "h-20"
               }`}
+              aria-label="Navigation principale"
             >
               {/* Logo */}
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                aria-label="Retour en haut"
+                aria-label="Retour en haut de page"
                 className="flex items-center gap-3"
               >
                 <motion.img
                   src={logo}
-                  alt="C&T Arbro"
+                  alt="Logo C&T Arbro"
+                  width="120"
+                  height="90"
+                  decoding="async"
+                  loading="eager"
+                  draggable={false}
                   animate={{ height: shrink ? 75 : 90 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="w-auto drop-shadow-sm"
+                  className="w-auto drop-shadow-sm select-none"
                 />
               </button>
 
@@ -132,7 +139,7 @@ export default function Header() {
                 ))}
               </ul>
 
-              {/* Actions principales */}
+              {/* Boutons actions */}
               <div className="hidden md:flex items-center gap-3">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -152,9 +159,10 @@ export default function Header() {
                 </motion.a>
               </div>
 
-              {/* Burger menu (mobile) */}
+              {/* Menu mobile (burger) */}
               <button
                 onClick={() => setOpen(!open)}
+                aria-label="Menu mobile"
                 className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-800 shadow-sm"
               >
                 {open ? (
@@ -239,7 +247,7 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Espace compensatoire */}
+      {/* Espace compensatoire pour éviter le chevauchement */}
       <div className="h-[108px] md:h-[116px]" />
     </>
   );

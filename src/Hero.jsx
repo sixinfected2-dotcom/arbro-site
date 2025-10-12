@@ -1,25 +1,34 @@
-// src/Hero.jsx
 import { motion } from "framer-motion";
-import { fadeUp, fadeIn, smoothTo } from "./Helpers";
+import { fadeUp, smoothTo } from "./Helpers";
 import heroImage from "./assets/optimized/camion.webp";
 
-function Hero() {
+/* =========================================================================
+   Hero — C&T Arbro
+   Version optimisée : LCP, SEO local, accessibilité & fluidité
+============================================================================ */
+
+export default function Hero() {
   return (
     <section
       id="hero"
       className="relative overflow-hidden bg-gradient-to-b from-[#173D2C] via-[#123224] to-[#0B1F16]"
+      aria-label="Section principale de présentation de C&T Arbro"
     >
-      {/* MOBILE */}
+      {/* ===== MOBILE ===== */}
       <div className="md:hidden relative">
         <img
           src={heroImage}
-          alt="Équipe C&T Arbro"
-          loading="lazy"
+          alt="Camion et équipe C&T Arbro en intervention à Magog et Sherbrooke"
+          loading="eager"
+          fetchpriority="high"
           decoding="async"
-          className="absolute inset-0 h-full w-full object-cover brightness-[0.75] blur-sm transition-all duration-700 ease-out"
+          width="800"
+          height="600"
+          className="absolute inset-0 h-full w-full object-cover brightness-[0.78] blur-sm transition-all duration-700 ease-out"
           onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
+          draggable={false}
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
         <div className="relative z-10 flex flex-col items-center text-center px-6 py-32">
           <motion.h1
             {...fadeUp(0)}
@@ -33,11 +42,12 @@ function Hero() {
             {...fadeUp(0.05)}
             className="mb-8 max-w-md text-[15px] text-gray-200 leading-relaxed"
           >
-            Des interventions réalisées avec{" "}
-            <span className="font-semibold text-emerald-300">sécurité</span>,{" "}
-            <span className="font-semibold text-emerald-300">propreté</span> et{" "}
-            <span className="font-semibold text-emerald-300">savoir-faire</span>.{" "}
-            Présents à Magog, Sherbrooke et partout en Estrie.
+            Interventions en{" "}
+            <strong className="text-emerald-300 font-semibold">élagage</strong>,
+            <strong className="text-emerald-300 font-semibold"> abattage</strong>{" "}
+            et <strong className="text-emerald-300 font-semibold">entretien</strong>{" "}
+            d’arbres à <strong>Magog</strong>, <strong>Sherbrooke</strong> et dans
+            toute <strong>l’Estrie</strong>.
           </motion.p>
 
           <motion.div
@@ -60,8 +70,9 @@ function Hero() {
         </div>
       </div>
 
-      {/* DESKTOP */}
+      {/* ===== DESKTOP ===== */}
       <div className="hidden md:grid relative mx-auto max-w-7xl grid-cols-2 items-center gap-12 px-8 py-28">
+        {/* TEXTE */}
         <motion.div {...fadeUp(0)}>
           <h1 className="mb-6 text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">
             L’expertise locale{" "}
@@ -69,11 +80,13 @@ function Hero() {
           </h1>
 
           <p className="mb-10 max-w-xl text-[17px] text-gray-200 leading-relaxed">
-            Des interventions réalisées avec{" "}
-            <span className="font-semibold text-emerald-300">sécurité</span>,{" "}
-            <span className="font-semibold text-emerald-300">propreté</span> et{" "}
-            <span className="font-semibold text-emerald-300">savoir-faire</span>.{" "}
-            Présents à Magog, Sherbrooke et partout en Estrie.
+            Experts en{" "}
+            <strong className="text-emerald-300 font-semibold">élagage</strong>,
+            <strong className="text-emerald-300 font-semibold"> abattage</strong>{" "}
+            et <strong className="text-emerald-300 font-semibold">entretien</strong>{" "}
+            d’arbres à <strong>Magog</strong>, <strong>Sherbrooke</strong> et
+            dans toute <strong>l’Estrie</strong>. Un service professionnel,
+            sécuritaire et soigné.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -97,26 +110,34 @@ function Hero() {
           </div>
         </motion.div>
 
+        {/* IMAGE */}
         <motion.div
           {...fadeUp(0.1)}
           className="relative flex justify-center items-center"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-white/5 backdrop-blur-sm">
+          <div
+            className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-white/5 backdrop-blur-sm"
+            role="presentation"
+          >
             <img
               src={heroImage}
-              alt="Camion et équipe en intervention"
-              loading="lazy"
+              alt="Camion C&T Arbro lors d’un élagage professionnel en Estrie"
+              loading="eager"
+              fetchpriority="high"
               decoding="async"
+              width="900"
+              height="600"
               className="h-[480px] w-full rounded-2xl object-cover brightness-[0.95] blur-sm transition-all duration-700 ease-out hover:scale-[1.02]"
-              onLoad={(e) => e.currentTarget.classList.remove('blur-sm')}
+              onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
               draggable={false}
             />
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/25 to-transparent"></div>
+            <div
+              className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/25 to-transparent"
+              aria-hidden="true"
+            />
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
-
-export default Hero;

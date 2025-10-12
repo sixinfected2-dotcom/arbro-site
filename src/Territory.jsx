@@ -1,19 +1,19 @@
-// src/Territory.jsx
 import { motion } from "framer-motion";
 import { fadeUp, fadeIn } from "./Helpers";
 
 /* =========================================================================
    Territoire — C&T Arbro
-   Version haut de gamme : design premium, carte Google conservée
+   Version optimisée : performance, accessibilité, cohérence visuelle et SEO local
 ============================================================================ */
-function Territory() {
+
+export default function Territory() {
   return (
     <section
       id="territoire"
       className="relative bg-[#f7faf9] py-24 md:py-28 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6 text-center">
-        {/* TITRES */}
+        {/* ===== TITRES ===== */}
         <motion.h2
           {...fadeUp(0)}
           className="text-sm font-semibold uppercase tracking-widest text-emerald-700"
@@ -36,14 +36,13 @@ function Territory() {
           <strong>Sherbrooke</strong>, <strong>Orford</strong>,{" "}
           <strong>Austin</strong>, <strong>Eastman</strong>,{" "}
           <strong>Sainte-Catherine-de-Hatley</strong>,{" "}
-          <strong>North Hatley</strong>, <strong>Ayer’s Cliff</strong> et
-          l’ensemble de la région de <strong>l’Estrie</strong>.  
-          <br />
-          Notre équipe locale intervient rapidement pour tous travaux d’élagage,
-          abattage, haubanage ou dessouchage.
+          <strong>North Hatley</strong>, <strong>Ayer’s Cliff</strong> et toute la{" "}
+          <strong>région de l’Estrie</strong>. <br />
+          Notre équipe locale intervient rapidement pour tous travaux
+          d’élagage, abattage, haubanage et dessouchage.
         </motion.p>
 
-        {/* GOOGLE MAP */}
+        {/* ===== GOOGLE MAP ===== */}
         <motion.div
           {...fadeIn(0.15)}
           className="relative mx-auto mt-12 max-w-6xl overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg transition-all duration-500 hover:shadow-2xl hover:scale-[1.01]"
@@ -51,26 +50,25 @@ function Territory() {
           <iframe
             title="Carte du territoire C&T Arbro"
             src="https://www.google.com/maps/d/u/0/embed?mid=1Xsmlf2GlCkKHCVt7kShlddc9igmjkuw&ehbc=2E312F"
-            width="100%"
-            height="480"
             loading="lazy"
             allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
             className="w-full aspect-[16/8] rounded-[2rem]"
             style={{ border: 0 }}
-          ></iframe>
-
-          {/* overlay décoratif subtil */}
-          <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-t from-emerald-50/20 to-transparent opacity-60" />
+          />
+          {/* Overlay décoratif */}
+          <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-t from-emerald-50/25 to-transparent opacity-60" />
         </motion.div>
 
-        {/* NOTE + CTA */}
+        {/* ===== NOTE + CTA ===== */}
         <motion.div {...fadeUp(0.25)} className="mt-8 space-y-4">
           <p className="text-[15px] text-slate-500 max-w-2xl mx-auto leading-relaxed">
             La carte ci-dessus illustre nos zones d’intervention principales 🌲 — 
             si vous êtes situés à proximité,{" "}
             <span className="text-emerald-700 font-medium">
               contactez-nous
-            </span> : nous couvrons également les secteurs environnants.
+            </span>{" "}
+            : nous couvrons également les secteurs environnants.
           </p>
 
           <a
@@ -86,6 +84,7 @@ function Territory() {
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth={2}
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -98,10 +97,9 @@ function Territory() {
         </motion.div>
       </div>
 
-      {/* Effet décoratif d’arrière-plan */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-100/40 blur-3xl rounded-full opacity-50 -z-10" />
+      {/* ===== DÉCORS D’ARRIÈRE-PLAN ===== */}
+      <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-100/40 blur-3xl rounded-full opacity-50 -z-10" />
+      <div className="absolute -bottom-20 right-0 w-[280px] h-[280px] bg-emerald-200/30 blur-3xl rounded-full opacity-40" />
     </section>
   );
 }
-
-export default Territory;

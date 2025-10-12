@@ -23,7 +23,7 @@ const GALLERY_IMAGES = [
   { src: img8, alt: "Dessouchage mécanique en hiver" },
 ];
 
-// Animation d’apparition subtile
+// Animation d’apparition fluide
 const item = {
   hidden: { opacity: 0, scale: 0.95, y: 20 },
   show: {
@@ -39,7 +39,7 @@ export default function Gallery() {
   const images = useMemo(() => GALLERY_IMAGES, []);
   const isOpen = openIndex !== null;
 
-  // Scroll lock quand lightbox ouverte
+  // Scroll lock quand la lightbox est ouverte
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
   }, [isOpen]);
@@ -62,7 +62,10 @@ export default function Gallery() {
   }, [onKeyDown]);
 
   return (
-    <section id="galerie" className="bg-[#f8faf9] py-24 md:py-28 relative overflow-hidden">
+    <section
+      id="galerie"
+      className="bg-[#f8faf9] py-24 md:py-28 relative overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-6 text-center">
         {/* HEADER */}
         <motion.div
@@ -80,13 +83,17 @@ export default function Gallery() {
           </h3>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-[15px] leading-relaxed">
             Découvrez la qualité de nos interventions en élagage, abattage,
-            taille de haies et dessouchage. Chaque image reflète notre engagement
-            envers un travail propre, précis et sécuritaire.
+            taille de haies et dessouchage. Chaque image reflète notre
+            engagement envers un travail propre, précis et sécuritaire.
           </p>
         </motion.div>
 
         {/* GALERIE */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5"
+          role="list"
+          aria-label="Galerie des réalisations C&T Arbro"
+        >
           {images.map((img, i) => (
             <motion.div
               key={i}
@@ -97,12 +104,15 @@ export default function Gallery() {
               whileHover={{ scale: 1.03 }}
               className="relative group overflow-hidden rounded-2xl shadow-md border border-slate-200 bg-white cursor-pointer transition-all duration-300 hover:shadow-lg"
               onClick={() => setOpenIndex(i)}
+              role="listitem"
             >
               <img
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
                 decoding="async"
+                width="400"
+                height="300"
                 className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-110 blur-sm"
                 onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
               />
@@ -135,6 +145,7 @@ export default function Gallery() {
               strokeWidth={2}
               stroke="currentColor"
               className="w-4 h-4"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -168,6 +179,8 @@ export default function Gallery() {
               <img
                 src={images[openIndex].src}
                 alt={images[openIndex].alt}
+                loading="eager"
+                decoding="async"
                 className="mx-auto max-h-[80vh] rounded-2xl shadow-2xl object-contain"
               />
               <p className="mt-3 text-center text-gray-200 text-sm md:text-base">
@@ -178,7 +191,7 @@ export default function Gallery() {
               <button
                 onClick={() => setOpenIndex(null)}
                 className="absolute top-5 right-5 bg-white/90 text-gray-900 rounded-full p-2 shadow-md hover:bg-white transition"
-                aria-label="Fermer"
+                aria-label="Fermer la lightbox"
               >
                 ✕
               </button>

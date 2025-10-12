@@ -1,18 +1,17 @@
-// src/WhyUs.jsx
 import { motion } from "framer-motion";
 import { fadeUp } from "./Helpers";
 
 /* =========================================================================
    Pourquoi nous choisir — C&T Arbro
-   Version premium : animations, stabilité, et fluidité entre sections
+   Version optimisée : animations fluides, accessibilité, SEO local, stabilité CLS
 ============================================================================ */
 
 const cards = [
   {
     title: "Sécurité garantie",
-    desc: "Chaque intervention est réalisée selon les normes les plus strictes, assurée et conforme aux protocoles de sécurité professionnels.",
+    desc: "Chaque intervention est effectuée selon les normes les plus strictes, avec assurance complète et conformité aux protocoles professionnels.",
     Icon: () => (
-      <svg viewBox="0 0 24 24" className="h-6 w-6">
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
         <path
           d="M12 3l7 3v5c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-3z"
           className="fill-emerald-600/90"
@@ -29,9 +28,9 @@ const cards = [
   },
   {
     title: "Travail propre & minutieux",
-    desc: "Nous laissons chaque chantier impeccable — démontage contrôlé, déchiquetage, ramassage et nettoyage complet inclus.",
+    desc: "Chaque chantier est laissé impeccable — démontage contrôlé, déchiquetage, ramassage et nettoyage complet inclus, sans exception.",
     Icon: () => (
-      <svg viewBox="0 0 24 24" className="h-6 w-6">
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
         <path
           d="M4 16h16M6 12h12M8 8h8M10 4h4"
           className="stroke-emerald-700"
@@ -44,9 +43,9 @@ const cards = [
   },
   {
     title: "Équipe qualifiée",
-    desc: "Des arboriculteurs certifiés, passionnés et expérimentés, formés aux meilleures techniques d’élagage et d’abattage en Estrie.",
+    desc: "Des arboriculteurs certifiés et passionnés, experts en élagage et abattage à Magog, Sherbrooke et partout en Estrie.",
     Icon: () => (
-      <svg viewBox="0 0 24 24" className="h-6 w-6">
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
         <path
           d="M12 12a4 4 0 100-8 4 4 0 000 8z"
           className="fill-emerald-600/90"
@@ -63,9 +62,9 @@ const cards = [
   },
   {
     title: "Satisfaction locale",
-    desc: "Une réputation bâtie sur la confiance et la satisfaction de nos clients à Magog, Sherbrooke et dans toute la région de l’Estrie.",
+    desc: "Une réputation solide bâtie sur la confiance et la satisfaction de nos clients à Magog, Sherbrooke et dans toute la région.",
     Icon: () => (
-      <svg viewBox="0 0 24 24" className="h-6 w-6">
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
         <path
           d="M20 8a8 8 0 11-16 0 8 8 0 0116 0z"
           className="fill-emerald-600/90"
@@ -82,7 +81,7 @@ const cards = [
   },
 ];
 
-function WhyUs() {
+export default function WhyUs() {
   return (
     <section
       id="pourquoi-nous"
@@ -101,9 +100,10 @@ function WhyUs() {
             L’excellence au service de vos arbres
           </h3>
           <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
-            Chez <span className="font-semibold text-emerald-700">C&T Arbro</span>,
-            nous allions expertise, sécurité et respect de l’environnement pour
-            garantir un service fiable, durable et adapté à chaque propriété.
+            Chez{" "}
+            <span className="font-semibold text-emerald-700">C&T Arbro</span>, nous
+            combinons expertise, sécurité et respect de l’environnement pour offrir
+            un service durable et professionnel dans toute l’Estrie.
           </p>
         </motion.div>
 
@@ -118,7 +118,7 @@ function WhyUs() {
               className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:shadow-lg hover:border-emerald-500/40 transition-all duration-300"
             >
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100 shrink-0">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100 shrink-0 shadow-sm">
                   <Icon />
                 </div>
                 <div>
@@ -135,10 +135,10 @@ function WhyUs() {
         </div>
       </div>
 
-      {/* Ligne de transition décorative vers Garanties */}
-      <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f6f8f9]/50 to-[#eef5f3] pointer-events-none" />
+      {/* Décor et transition vers Garanties */}
+      <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f6f8f9]/60 to-[#eef5f3] pointer-events-none" />
+      <div className="absolute -top-20 right-0 w-[320px] h-[320px] bg-emerald-100/40 blur-3xl rounded-full opacity-40" />
+      <div className="absolute -bottom-24 left-0 w-[280px] h-[280px] bg-emerald-200/30 blur-3xl rounded-full opacity-40" />
     </section>
   );
 }
-
-export default WhyUs;

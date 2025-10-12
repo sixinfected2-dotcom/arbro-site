@@ -3,12 +3,11 @@ import { motion } from "framer-motion";
 import { fadeUp } from "./Helpers";
 import heroImage from "./assets/optimized/camion.webp";
 
-
 /* =========================================================================
-   À propos — version finale : fluide, humaine, et hautement professionnelle
+   À propos — version finale optimisée (LCP, CLS, SEO et performance)
 ============================================================================ */
 
-function About() {
+export default function About() {
   const paragraphs = [
     <>
       Depuis plus de{" "}
@@ -65,9 +64,13 @@ function About() {
           <div className="rounded-[1.5rem] overflow-hidden shadow-xl border border-emerald-100">
             <img
               src={heroImage}
-              alt="Équipe C&T Arbro en intervention"
-              className="h-[320px] w-full object-cover rounded-[1.5rem]"
+              alt="Camion et équipe C&T Arbro en intervention d’élagage"
+              width="800"
+              height="600"
               loading="lazy"
+              decoding="async"
+              className="h-[320px] w-full object-cover rounded-[1.5rem] brightness-[0.98] blur-sm transition-all duration-700 ease-out"
+              onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
             />
           </div>
         </motion.div>
@@ -117,14 +120,18 @@ function About() {
           viewport={{ once: true }}
           className="relative hidden md:block"
         >
-          <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-emerald-100 group">
+          <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-emerald-100 group bg-white/5 backdrop-blur-sm">
             <img
               src={heroImage}
-              alt="Travaux d'élagage professionnel C&T Arbro"
-              className="h-[440px] md:h-[500px] w-full object-cover rounded-[2rem] transform group-hover:scale-[1.03] transition-transform duration-700 ease-out brightness-[0.98]"
+              alt="Travaux d’élagage professionnel par C&T Arbro à Magog"
+              width="900"
+              height="600"
               loading="lazy"
+              decoding="async"
+              className="h-[440px] md:h-[500px] w-full object-cover rounded-[2rem] transform group-hover:scale-[1.03] transition-transform duration-700 ease-out brightness-[0.98] blur-sm"
+              onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-700 rounded-[2rem]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-700 rounded-[2rem]" />
           </div>
         </motion.div>
       </div>
@@ -136,5 +143,3 @@ function About() {
     </section>
   );
 }
-
-export default About;

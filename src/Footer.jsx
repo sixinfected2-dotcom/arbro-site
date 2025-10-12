@@ -6,7 +6,8 @@ import facebook from "./assets/optimized/facebook.webp";
 import google from "./assets/optimized/google.webp";
 
 /* =========================================================================
-   Footer — version finale ultra stable (aucun dégradé, aucune marge)
+   Footer — version finale ultra stable et optimisée
+   (aucun dégradé, aucun glitch, images WebP, SEO renforcé)
 ============================================================================ */
 
 export default function Footer() {
@@ -41,12 +42,16 @@ export default function Footer() {
             alt="C&T Arbro — Arboriculteurs à Magog et Sherbrooke"
             loading="lazy"
             decoding="async"
+            width="140"
+            height="140"
             className="h-20 w-auto mb-4 drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)] blur-sm transition-all duration-700"
             onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
           />
           <p className="text-sm leading-relaxed text-gray-400 max-w-sm">
             <strong className="text-white">C&T Arbro</strong> —{" "}
-            <span className="text-emerald-400 font-medium">arboriculteurs certifiés</span>{" "}
+            <span className="text-emerald-400 font-medium">
+              arboriculteurs certifiés
+            </span>{" "}
             à <strong>Magog</strong>, <strong>Sherbrooke</strong> et dans toute{" "}
             <strong>l’Estrie</strong>. Experts en{" "}
             <span className="text-white font-medium">élagage</span>,{" "}
@@ -72,6 +77,8 @@ export default function Footer() {
                   alt="Facebook C&T Arbro"
                   loading="lazy"
                   decoding="async"
+                  width="36"
+                  height="36"
                   className="h-9 w-9 rounded-full blur-sm transition-all duration-700"
                   onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
                 />
@@ -88,6 +95,8 @@ export default function Footer() {
                   alt="Avis Google C&T Arbro"
                   loading="lazy"
                   decoding="async"
+                  width="36"
+                  height="36"
                   className="h-9 w-auto blur-sm transition-all duration-700"
                   onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
                 />
@@ -98,25 +107,32 @@ export default function Footer() {
 
         {/* COORDONNÉES */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-4">
-            Coordonnées
-          </h3>
+          <h3 className="text-white font-semibold text-lg mb-4">Coordonnées</h3>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-emerald-400" />
-              <a href="tel:8198433101" className="hover:text-emerald-400 transition">
+              <a
+                href="tel:8198433101"
+                className="hover:text-emerald-400 transition"
+              >
                 819-843-3101
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-emerald-400" />
-              <a href="tel:8194372104" className="hover:text-emerald-400 transition">
+              <a
+                href="tel:8194372104"
+                className="hover:text-emerald-400 transition"
+              >
                 819-437-2104
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-emerald-400" />
-              <a href="mailto:info@ctarbro.ca" className="hover:text-emerald-400 transition">
+              <a
+                href="mailto:info@ctarbro.ca"
+                className="hover:text-emerald-400 transition"
+              >
                 info@ctarbro.ca
               </a>
             </li>
@@ -133,7 +149,10 @@ export default function Footer() {
             Heures d’ouverture
           </h3>
           <p className="text-sm text-gray-400 leading-relaxed">
-            Ouvert <span className="text-white font-medium">24h/24 – 7 jours/7</span>
+            Ouvert{" "}
+            <span className="text-white font-medium">
+              24h/24 – 7 jours/7
+            </span>
             <br />
             <span className="text-emerald-400 font-semibold">
               Urgence disponible

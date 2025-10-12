@@ -1,4 +1,3 @@
-// src/Services.jsx
 import { motion } from "framer-motion";
 import { fadeUp } from "./Helpers";
 import {
@@ -13,10 +12,12 @@ import {
 
 /* =========================================================================
    Données — Services C&T Arbro
+   Optimisée pour performance, accessibilité et SEO local
 ============================================================================ */
+
 export const SERVICES = [
   {
-    icon: <Scissors className="w-6 h-6 text-emerald-600" />,
+    icon: <Scissors className="w-6 h-6 text-emerald-600" aria-hidden="true" />,
     title: "Élagage d’arbres",
     desc: (
       <>
@@ -32,64 +33,68 @@ export const SERVICES = [
     ],
   },
   {
-    icon: <Leaf className="w-6 h-6 text-emerald-600" />,
+    icon: <Leaf className="w-6 h-6 text-emerald-600" aria-hidden="true" />,
     title: "Émondage d’arbres",
     desc: (
       <>
-        Travail d’entretien visant à{" "}
+        Entretien visant à{" "}
         <span className="text-emerald-600 font-medium">
           améliorer la croissance
-        </span>
-        , la lumière et l’apparence générale de vos arbres.
+        </span>{" "}
+        et la lumière pour une apparence harmonieuse.
       </>
     ),
     checks: [
-      "Interventions respectueuses de l’arbre",
+      "Méthodes respectueuses de l’arbre",
       "Croissance dirigée et durable",
-      "Résultat soigné et équilibré",
+      "Résultat propre et équilibré",
     ],
   },
   {
-    icon: <TreeDeciduous className="w-6 h-6 text-emerald-600" />,
+    icon: (
+      <TreeDeciduous className="w-6 h-6 text-emerald-600" aria-hidden="true" />
+    ),
     title: "Abattage d’arbres",
     desc: (
       <>
         Abattage{" "}
         <span className="text-emerald-600 font-medium">sécuritaire</span> des
-        arbres à risque, morts ou encombrants. Équipement adapté et périmètre
-        de travail entièrement sécurisé.
+        arbres à risque, morts ou encombrants — avec équipement adapté et
+        périmètre de travail contrôlé.
       </>
     ),
     checks: [
-      "Évaluation par arboriculteur",
+      "Évaluation par arboriculteur certifié",
       "Méthodes contrôlées (démantèlement, rétention)",
       "Site propre après intervention",
     ],
   },
   {
-    icon: <Sprout className="w-6 h-6 text-emerald-600" />,
+    icon: <Sprout className="w-6 h-6 text-emerald-600" aria-hidden="true" />,
     title: "Taille de haies",
     desc: (
       <>
         Taille nette et uniforme pour une haie{" "}
-        <span className="text-emerald-600 font-medium">dense et esthétique</span>,
-        adaptée à chaque espèce.
+        <span className="text-emerald-600 font-medium">
+          dense et esthétique
+        </span>
+        , adaptée à chaque espèce et à votre propriété.
       </>
     ),
     checks: [
       "Haies de cèdres, feuillus et mixtes",
       "Découpe droite et précise",
-      "Résultat propre et professionnel",
+      "Finition impeccable",
     ],
   },
   {
-    icon: <Axe className="w-6 h-6 text-emerald-600" />,
+    icon: <Axe className="w-6 h-6 text-emerald-600" aria-hidden="true" />,
     title: "Dessouchage / Essouchage",
     desc: (
       <>
         Retrait complet ou partiel des{" "}
         <span className="text-emerald-600 font-medium">souches d’arbres</span>{" "}
-        après abattage, pour un terrain prêt à être réaménagé.
+        pour un terrain prêt à être réaménagé.
       </>
     ),
     checks: [
@@ -99,27 +104,29 @@ export const SERVICES = [
     ],
   },
   {
-    icon: <Cable className="w-6 h-6 text-emerald-600" />,
+    icon: <Cable className="w-6 h-6 text-emerald-600" aria-hidden="true" />,
     title: "Haubanage & soutien",
     desc: (
       <>
         Renforcement structurel des arbres{" "}
-        <span className="text-emerald-600 font-medium">fragilisés</span> à l’aide
-        de haubans et câbles de soutien discrets et résistants.
+        <span className="text-emerald-600 font-medium">fragilisés</span> à
+        l’aide de haubans et câbles de soutien discrets et durables.
       </>
     ),
     checks: [
       "Évaluation par spécialiste",
       "Matériel homologué et discret",
-      "Prévention des bris en tempête",
+      "Prévention des bris lors de tempêtes",
     ],
   },
 ];
 
 /* =========================================================================
    Composant principal — Services C&T Arbro
+   Version finale optimisée pour PageSpeed, UX & cohérence
 ============================================================================ */
-function Services() {
+
+export default function Services() {
   return (
     <section
       id="services"
@@ -139,7 +146,8 @@ function Services() {
           className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
         >
           Interventions{" "}
-          <span className="text-emerald-600">professionnelles</span>
+          <span className="text-emerald-600">professionnelles</span> à Magog &
+          en Estrie
         </motion.h3>
 
         <motion.p
@@ -175,7 +183,10 @@ function Services() {
               <ul className="space-y-1 text-[14px] text-slate-700">
                 {s.checks.map((c, idx) => (
                   <li key={idx} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <Check
+                      className="w-4 h-4 text-emerald-600 shrink-0"
+                      aria-hidden="true"
+                    />
                     {c}
                   </li>
                 ))}
@@ -207,7 +218,10 @@ function Services() {
               <ul className="space-y-1 text-[14px] text-slate-700">
                 {s.checks.map((c, idx) => (
                   <li key={idx} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <Check
+                      className="w-4 h-4 text-emerald-600 shrink-0"
+                      aria-hidden="true"
+                    />
                     {c}
                   </li>
                 ))}
@@ -216,8 +230,11 @@ function Services() {
           ))}
         </div>
       </div>
+
+      {/* Décor doux et transition */}
+      <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-b from-transparent via-[#f6f9f7]/60 to-[#eef5f3] pointer-events-none" />
+      <div className="absolute -top-20 right-0 w-[320px] h-[320px] bg-emerald-100/40 blur-3xl rounded-full opacity-40" />
+      <div className="absolute -bottom-20 left-0 w-[300px] h-[300px] bg-emerald-200/30 blur-3xl rounded-full opacity-40" />
     </section>
   );
 }
-
-export default Services;
