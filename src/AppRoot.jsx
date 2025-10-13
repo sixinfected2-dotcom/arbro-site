@@ -29,34 +29,37 @@ const sectionFade = {
 };
 
 /* =========================================================================
-   Scroll fluide — fonctionne pour /services et /#services
+   Scroll fluide — fonctionne pour /services, /#services, etc.
 ============================================================================ */
 function ScrollToSection() {
   useEffect(() => {
-    const scroll = () => {
+    const scrollToTarget = () => {
       const hash = window.location.hash.replace("#", "");
       const path = window.location.pathname.replace("/", "");
-      const id = hash || path;
-      if (id) {
-        const el = document.getElementById(id);
+      const targetId = hash || path;
+      if (targetId) {
+        const el = document.getElementById(targetId);
         if (el) {
-          setTimeout(() => {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 300);
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
     };
 
-    scroll();
-    window.addEventListener("hashchange", scroll);
-    return () => window.removeEventListener("hashchange", scroll);
+    // Scroll au chargement complet du DOM + après lazy loading
+    const timer = setTimeout(scrollToTarget, 600);
+    window.addEventListener("hashchange", scrollToTarget);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("hashchange", scrollToTarget);
+    };
   }, []);
 
   return null;
 }
 
 /* =========================================================================
-   SEO dynamique (titre + meta description)
+   SEO dynamique (titre + meta description + canonical)
 ============================================================================ */
 function DynamicSEO() {
   useEffect(() => {
@@ -133,7 +136,7 @@ function DynamicSEO() {
 }
 
 /* =========================================================================
-   AppRoot — structure principale
+   AppRoot — Structure complète du site
 ============================================================================ */
 export default function AppRoot() {
   return (
@@ -143,6 +146,7 @@ export default function AppRoot() {
     >
       <Header />
 
+      {/* SEO et navigation */}
       <ScrollToSection />
       <DynamicSEO />
 
@@ -208,16 +212,16 @@ export default function AppRoot() {
               addressLocality: "Magog",
               addressRegion: "QC",
               postalCode: "J1X",
-              addressCountry: "CA",
+              addressCountry": "CA"
             },
             areaServed: { "@type": "AdministrativeArea", name: "Estrie" },
-            openingHours: "Mo-Su 00:00-23:59",
-            geo: { "@type": "GeoCoordinates", latitude: 45.266, longitude: -72.147 },
-            sameAs: [
+            openingHours": "Mo-Su 00:00-23:59",
+            geo": { "@type": "GeoCoordinates", latitude: 45.266, longitude: -72.147 },
+            sameAs": [
               "https://www.facebook.com/tonlienici",
-              "https://share.google/DiDwdpKmLmBViuMd6",
-            ],
-          }),
+              "https://share.google/DiDwdpKmLmBViuMd6"
+            ]
+          })
         }}
       />
     </div>
