@@ -212,16 +212,20 @@ export default function AppRoot() {
               addressLocality: "Magog",
               addressRegion: "QC",
               postalCode: "J1X",
-              addressCountry": "CA"
+              addressCountry: "CA",
             },
             areaServed: { "@type": "AdministrativeArea", name: "Estrie" },
-            openingHours": "Mo-Su 00:00-23:59",
-            geo": { "@type": "GeoCoordinates", latitude: 45.266, longitude: -72.147 },
-            sameAs": [
+            openingHours: "Mo-Su 00:00-23:59",
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 45.266,
+              longitude: -72.147,
+            },
+            sameAs: [
               "https://www.facebook.com/tonlienici",
-              "https://share.google/DiDwdpKmLmBViuMd6"
-            ]
-          })
+              "https://share.google/DiDwdpKmLmBViuMd6",
+            ],
+          }),
         }}
       />
     </div>
