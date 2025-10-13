@@ -11,16 +11,16 @@
   "outputDirectory": "dist",
   "framework": null,
 
-  "routes": [
-    { "src": "/services", "dest": "/" },
-    { "src": "/territoire", "dest": "/" },
-    { "src": "/galerie", "dest": "/" },
-    { "src": "/avis", "dest": "/" },
-    { "src": "/garanties", "dest": "/" },
-    { "src": "/apropos", "dest": "/" },
-    { "src": "/estimation", "dest": "/" },
-    { "src": "/contact", "dest": "/" },
-    { "src": "/(.*)", "dest": "/" }
+  "rewrites": [
+    { "source": "/services", "destination": "/" },
+    { "source": "/territoire", "destination": "/" },
+    { "source": "/galerie", "destination": "/" },
+    { "source": "/avis", "destination": "/" },
+    { "source": "/garanties", "destination": "/" },
+    { "source": "/apropos", "destination": "/" },
+    { "source": "/estimation", "destination": "/" },
+    { "source": "/contact", "destination": "/" },
+    { "source": "/(.*)", "destination": "/" }
   ],
 
   "headers": [
@@ -33,11 +33,11 @@
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
         { "key": "Permissions-Policy", "value": "geolocation=(self), microphone=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; img-src * data:; media-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.app; style-src 'self' 'unsafe-inline'; font-src 'self' data:;" }
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src * data:; media-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.app; style-src 'self' 'unsafe-inline'; font-src 'self' data:;"
+        }
       ]
     }
-  ],
-
-  "cleanUrls": true,
-  "trailingSlash": false
+  ]
 }
