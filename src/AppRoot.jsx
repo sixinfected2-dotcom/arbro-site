@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer.jsx";
 
 /* =========================================================================
-   Lazy loading des sections — améliore les performances
+   Lazy loading — performance boost
 ============================================================================ */
 const Hero = lazy(() => import("./Hero"));
 const Services = lazy(() => import("./Services"));
@@ -17,7 +17,7 @@ const About = lazy(() => import("./About"));
 const Estimation = lazy(() => import("./Estimation"));
 
 /* =========================================================================
-   Animation fluide entre les sections
+   Animation entre sections
 ============================================================================ */
 const sectionFade = {
   hidden: { opacity: 0, y: 25 },
@@ -29,29 +29,111 @@ const sectionFade = {
 };
 
 /* =========================================================================
-   Scroll automatique selon l’URL (ex: /services → section Services)
+   Scroll fluide — fonctionne pour /services et /#services
 ============================================================================ */
 function ScrollToSection() {
   useEffect(() => {
-    const path = window.location.pathname.replace("/", "");
-
-    if (path) {
-      const section = document.getElementById(path);
-      if (section) {
-        setTimeout(() => {
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 300);
+    const scroll = () => {
+      const hash = window.location.hash.replace("#", "");
+      const path = window.location.pathname.replace("/", "");
+      const id = hash || path;
+      if (id) {
+        const el = document.getElementById(id);
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 300);
+        }
       }
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    };
+
+    scroll();
+    window.addEventListener("hashchange", scroll);
+    return () => window.removeEventListener("hashchange", scroll);
   }, []);
 
   return null;
 }
 
 /* =========================================================================
-   AppRoot — Structure complète du site C&T Arbro
+   SEO dynamique (titre + meta description)
+============================================================================ */
+function DynamicSEO() {
+  useEffect(() => {
+    const meta = {
+      default: {
+        title: "C&T Arbro — Élagage & Abattage d’arbres à Magog et Sherbrooke",
+        desc: "Service professionnel d’élagage, d’abattage et d’entretien d’arbres à Magog, Sherbrooke et en Estrie. Estimation gratuite et service rapide.",
+      },
+      services: {
+        title: "Élagage & Abattage d’arbres à Magog et Sherbrooke | C&T Arbro",
+        desc: "Experts en élagage, abattage et entretien d’arbres à Magog et Sherbrooke. Sécurité, propreté et savoir-faire local.",
+      },
+      territoire: {
+        title: "Zones desservies — Estrie, Magog, Sherbrooke | C&T Arbro",
+        desc: "Nous desservons Magog, Sherbrooke et toute l’Estrie pour vos besoins en émondage et abattage d’arbres.",
+      },
+      galerie: {
+        title: "Galerie de réalisations | C&T Arbro",
+        desc: "Découvrez nos réalisations en élagage, abattage et entretien d’arbres à Magog et Sherbrooke.",
+      },
+      avis: {
+        title: "Avis clients — C&T Arbro Magog Sherbrooke",
+        desc: "Consultez les avis de nos clients satisfaits à Magog et Sherbrooke. Service rapide, professionnel et sécuritaire.",
+      },
+      garanties: {
+        title: "Nos garanties et sécurité | C&T Arbro",
+        desc: "Travaux d’élagage et abattage sécuritaires, assurés et garantis par C&T Arbro à Magog et Sherbrooke.",
+      },
+      apropos: {
+        title: "À propos de C&T Arbro | Experts en arboriculture",
+        desc: "C&T Arbro, entreprise locale spécialisée en élagage, abattage et entretien d’arbres. Basée à Magog, au service de l’Estrie.",
+      },
+      estimation: {
+        title: "Estimation gratuite — C&T Arbro Magog Sherbrooke",
+        desc: "Obtenez une estimation gratuite pour vos travaux d’élagage ou d’abattage à Magog et Sherbrooke. Contactez-nous dès aujourd’hui.",
+      },
+      contact: {
+        title: "Contactez-nous — C&T Arbro | Magog Sherbrooke Estrie",
+        desc: "Besoin d’un arboriculteur à Magog ou Sherbrooke ? Contactez C&T Arbro pour une estimation rapide et sans frais.",
+      },
+    };
+
+    const updateSEO = () => {
+      const hash = window.location.hash.replace("#", "");
+      const path = window.location.pathname.replace("/", "");
+      const key = hash || path;
+      const { title, desc } = meta[key] || meta.default;
+
+      document.title = title;
+
+      let metaTag = document.querySelector('meta[name="description"]');
+      if (!metaTag) {
+        metaTag = document.createElement("meta");
+        metaTag.name = "description";
+        document.head.appendChild(metaTag);
+      }
+      metaTag.content = desc;
+
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.rel = "canonical";
+        document.head.appendChild(canonical);
+      }
+      canonical.href = `https://ctarbro.ca${window.location.pathname}${window.location.hash}`;
+    };
+
+    updateSEO();
+    window.addEventListener("hashchange", updateSEO);
+    return () => window.removeEventListener("hashchange", updateSEO);
+  }, []);
+
+  return null;
+}
+
+/* =========================================================================
+   AppRoot — structure principale
 ============================================================================ */
 export default function AppRoot() {
   return (
@@ -59,13 +141,11 @@ export default function AppRoot() {
       id="top"
       className="min-h-screen scroll-smooth bg-gradient-to-b from-[#f6f8f9] via-[#e7ebe9] to-[#0b0b0b] text-slate-800 selection:bg-emerald-200/60 overflow-x-hidden"
     >
-      {/* HEADER GLOBAL */}
       <Header />
 
-      {/* Scroll automatique SEO-friendly */}
       <ScrollToSection />
+      <DynamicSEO />
 
-      {/* CONTENU PRINCIPAL */}
       <main>
         <Suspense
           fallback={
@@ -84,9 +164,9 @@ export default function AppRoot() {
             Guarantees,
             About,
             Estimation,
-          ].map((Component, index) => (
+          ].map((Component, i) => (
             <motion.section
-              key={index}
+              key={i}
               variants={sectionFade}
               initial="hidden"
               whileInView="show"
@@ -99,21 +179,15 @@ export default function AppRoot() {
         </Suspense>
       </main>
 
-      {/* SECTION CONTACT (SEO + navigation sémantique) */}
-      <section
-        id="contact"
-        aria-hidden="false"
-        className="sr-only"
-      >
+      <section id="contact" aria-hidden="false" className="sr-only">
         Contactez C&T Arbro — Élagage, Abattage et Entretien d’arbres à Magog et
         Sherbrooke. Téléphone : 819-843-3101 / 819-437-2104.
       </section>
 
-      {/* FOOTER FINAL */}
       <Footer />
 
       {/* =======================================================================
-          Données structurées SEO — Google Local Business Schema
+          Données structurées JSON-LD — Google Local Business
       ======================================================================= */}
       <script
         type="application/ld+json"
