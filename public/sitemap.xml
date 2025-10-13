@@ -3,34 +3,68 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
+  <!-- Page d’accueil -->
   <url>
-    <loc>https://arbro-site-p2cg.vercel.app/</loc>
+    <loc>https://ctarbro.ca/</loc>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Sections principales (URLs sans # pour compatibilité SEO) -->
   <url>
-    <loc>https://arbro-site-p2cg.vercel.app/#services</loc>
+    <loc>https://ctarbro.ca/services</loc>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://arbro-site-p2cg.vercel.app/#territoire</loc>
+    <loc>https://ctarbro.ca/territoire</loc>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://arbro-site-p2cg.vercel.app/#galerie</loc>
+    <loc>https://ctarbro.ca/galerie</loc>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://arbro-site-p2cg.vercel.app/#estimation</loc>
+    <loc>https://ctarbro.ca/avis</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ctarbro.ca/garanties</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ctarbro.ca/apropos</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ctarbro.ca/estimation</loc>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://arbro-site-p2cg.vercel.app/#footer</loc>
+    <loc>https://ctarbro.ca/contact</loc>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
 </urlset>
