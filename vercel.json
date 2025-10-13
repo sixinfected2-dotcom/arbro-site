@@ -7,6 +7,10 @@
       "config": { "distDir": "dist" }
     }
   ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": null,
+
   "routes": [
     { "src": "/services", "dest": "/" },
     { "src": "/territoire", "dest": "/" },
@@ -18,6 +22,7 @@
     { "src": "/contact", "dest": "/" },
     { "src": "/(.*)", "dest": "/" }
   ],
+
   "headers": [
     {
       "source": "/(.*)",
@@ -27,8 +32,12 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Permissions-Policy", "value": "geolocation=(self), microphone=()" }
+        { "key": "Permissions-Policy", "value": "geolocation=(self), microphone=()" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; img-src * data:; media-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.app; style-src 'self' 'unsafe-inline'; font-src 'self' data:;" }
       ]
     }
-  ]
+  ],
+
+  "cleanUrls": true,
+  "trailingSlash": false
 }
