@@ -1,8 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "./Header";
 import Footer from "./Footer.jsx";
-
 
 /* =========================================================================
    Lazy loading des sections — améliore les performances
@@ -30,17 +29,41 @@ const sectionFade = {
 };
 
 /* =========================================================================
+   Scroll automatique selon l’URL (ex: /services → section Services)
+============================================================================ */
+function ScrollToSection() {
+  useEffect(() => {
+    const path = window.location.pathname.replace("/", "");
+
+    if (path) {
+      const section = document.getElementById(path);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, []);
+
+  return null;
+}
+
+/* =========================================================================
    AppRoot — Structure complète du site C&T Arbro
 ============================================================================ */
 export default function AppRoot() {
   return (
     <div
-  id="top"
-  className="min-h-screen scroll-smooth bg-gradient-to-b from-[#f6f8f9] via-[#e7ebe9] to-[#0b0b0b] text-slate-800 selection:bg-emerald-200/60 overflow-x-hidden"
->
-
+      id="top"
+      className="min-h-screen scroll-smooth bg-gradient-to-b from-[#f6f8f9] via-[#e7ebe9] to-[#0b0b0b] text-slate-800 selection:bg-emerald-200/60 overflow-x-hidden"
+    >
       {/* HEADER GLOBAL */}
       <Header />
+
+      {/* Scroll automatique SEO-friendly */}
+      <ScrollToSection />
 
       {/* CONTENU PRINCIPAL */}
       <main>
@@ -77,7 +100,11 @@ export default function AppRoot() {
       </main>
 
       {/* SECTION CONTACT (SEO + navigation sémantique) */}
-      <section id="contact" aria-hidden="false" className="sr-only">
+      <section
+        id="contact"
+        aria-hidden="false"
+        className="sr-only"
+      >
         Contactez C&T Arbro — Élagage, Abattage et Entretien d’arbres à Magog et
         Sherbrooke. Téléphone : 819-843-3101 / 819-437-2104.
       </section>
@@ -97,9 +124,9 @@ export default function AppRoot() {
             name: "C&T Arbro",
             description:
               "Entreprise locale d’élagage, abattage et entretien d’arbres à Magog et Sherbrooke. Service professionnel 24/7 en Estrie.",
-            image: "https://arbro-site.vercel.app/og-image.jpg",
-            "@id": "https://arbro-site.vercel.app",
-            url: "https://arbro-site.vercel.app",
+            image: "https://ctarbro.ca/og-image.jpg",
+            "@id": "https://ctarbro.ca",
+            url: "https://ctarbro.ca",
             telephone: ["+18198433101", "+18194372104"],
             address: {
               "@type": "PostalAddress",
@@ -109,16 +136,9 @@ export default function AppRoot() {
               postalCode: "J1X",
               addressCountry: "CA",
             },
-            areaServed: {
-              "@type": "AdministrativeArea",
-              name: "Estrie",
-            },
+            areaServed: { "@type": "AdministrativeArea", name: "Estrie" },
             openingHours: "Mo-Su 00:00-23:59",
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: 45.266,
-              longitude: -72.147,
-            },
+            geo: { "@type": "GeoCoordinates", latitude: 45.266, longitude: -72.147 },
             sameAs: [
               "https://www.facebook.com/tonlienici",
               "https://share.google/DiDwdpKmLmBViuMd6",
