@@ -2,25 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build"
+      "src": "vite.config.js",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
     }
   ],
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-
   "routes": [
-    { "src": "/services", "dest": "/index.html" },
-    { "src": "/territoire", "dest": "/index.html" },
-    { "src": "/galerie", "dest": "/index.html" },
-    { "src": "/avis", "dest": "/index.html" },
-    { "src": "/garanties", "dest": "/index.html" },
-    { "src": "/apropos", "dest": "/index.html" },
-    { "src": "/estimation", "dest": "/index.html" },
-    { "src": "/contact", "dest": "/index.html" },
-    { "src": "/", "dest": "/index.html" }
+    { "src": "/services", "dest": "/" },
+    { "src": "/territoire", "dest": "/" },
+    { "src": "/galerie", "dest": "/" },
+    { "src": "/avis", "dest": "/" },
+    { "src": "/garanties", "dest": "/" },
+    { "src": "/apropos", "dest": "/" },
+    { "src": "/estimation", "dest": "/" },
+    { "src": "/contact", "dest": "/" },
+    { "src": "/(.*)", "dest": "/" }
   ],
-
   "headers": [
     {
       "source": "/(.*)",
@@ -33,8 +30,5 @@
         { "key": "Permissions-Policy", "value": "geolocation=(self), microphone=()" }
       ]
     }
-  ],
-
-  "cleanUrls": true,
-  "trailingSlash": false
+  ]
 }
