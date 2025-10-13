@@ -115,7 +115,7 @@ export default function Footer() {
                 href="tel:8198433101"
                 className="hover:text-emerald-400 transition"
               >
-                819-843-3101
+                (819) 843-3101
               </a>
             </li>
             <li className="flex items-center gap-2">
@@ -124,7 +124,7 @@ export default function Footer() {
                 href="tel:8194372104"
                 className="hover:text-emerald-400 transition"
               >
-                819-437-2104
+                (819) 437-2104
               </a>
             </li>
             <li className="flex items-center gap-2">
@@ -133,7 +133,7 @@ export default function Footer() {
                 href="mailto:ctarbro@gmail.com"
                 className="hover:text-emerald-400 transition"
               >
-                info@ctarbro.ca
+                ctarbro@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-2 mt-2">
