@@ -1,9 +1,28 @@
+# robots.txt pour C&T Arbro - Élagage & Abattage d’arbres à Magog et Sherbrooke
+# Dernière mise à jour : 2025-10-13
+
 User-agent: *
 Allow: /
 
-# Empêche l’indexation des dossiers internes de build
+# Bloque les répertoires techniques non destinés à l’indexation
 Disallow: /node_modules/
 Disallow: /src/
+Disallow: /assets/
+Disallow: /scripts/
+Disallow: /api/
 
-# Localisation du sitemap
-Sitemap: https://arbro-site-p2cg.vercel.app/sitemap.xml
+# Évite le crawl inutile des fichiers build
+Disallow: /*.map$
+Disallow: /*.json$
+
+# Autorise uniquement les ressources publiques
+Allow: /public/
+
+# Sitemap officiel
+Sitemap: https://ctarbro.ca/sitemap.xml
+
+# Politesse du crawl (empêche les saturations serveur)
+Crawl-delay: 10
+
+# Contact pour Googlebot (utile pour la transparence SEO)
+Host: ctarbro.ca

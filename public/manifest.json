@@ -13,33 +13,48 @@
   "categories": ["business", "services", "home_improvement"],
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/favicon.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
     {
       "name": "Demander une estimation",
       "url": "/#estimation",
-      "icons": [{ "src": "/favicon.png", "sizes": "96x96", "type": "image/png" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "96x96", "type": "image/png" }]
     },
     {
       "name": "Voir la galerie",
       "url": "/#galerie",
-      "icons": [{ "src": "/favicon.png", "sizes": "96x96", "type": "image/png" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "96x96", "type": "image/png" }]
     },
     {
       "name": "Territoire desservi",
       "url": "/#territoire",
-      "icons": [{ "src": "/favicon.png", "sizes": "96x96", "type": "image/png" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "96x96", "type": "image/png" }]
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Page d’accueil C&T Arbro"
+    }
+  ],
+  "prefer_related_applications": false
 }
