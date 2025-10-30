@@ -159,7 +159,7 @@ export default function Estimation() {
                 name="phone"
                 type="tel"
                 inputMode="tel"
-                pattern="[0-9\- ]+"
+                pattern="[0-9\\- ]+"
                 required
                 placeholder="Ex : 819-437-2104"
                 className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-[15px] focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition-all"
@@ -178,7 +178,7 @@ export default function Estimation() {
                   >
                     <input
                       type="checkbox"
-                      name="services"
+                      name="services_option"
                       value={service}
                       checked={selectedServices.includes(service)}
                       onChange={() => toggleService(service)}
@@ -201,6 +201,14 @@ export default function Estimation() {
               />
             </Field>
           </div>
+
+          {/* ➕ Champ caché : liste consolidée des services */}
+          <input
+            type="hidden"
+            name="services"
+            value={selectedServices.join(", ")}
+            readOnly
+          />
 
           {/* BOUTON ENVOI */}
           <div className="md:col-span-2 mt-6 text-center">
