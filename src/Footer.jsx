@@ -112,16 +112,7 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-emerald-400" />
               <a
-                href="tel:8198433101"
-                className="hover:text-emerald-400 transition"
-              >
-                (819) 843-3101
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4 text-emerald-400" />
-              <a
-                href="tel:8194372104"
+                href="tel:+1-819-437-2104"
                 className="hover:text-emerald-400 transition"
               >
                 (819) 437-2104
@@ -133,7 +124,7 @@ export default function Footer() {
                 href="mailto:contact.ctarbro@gmail.com"
                 className="hover:text-emerald-400 transition"
               >
-                contact.ctarbro@gmail.com 
+                contact.ctarbro@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-2 mt-2">

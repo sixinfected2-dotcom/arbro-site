@@ -85,10 +85,10 @@ export default function Header() {
             <strong className="font-semibold text-white">C&T Arbro</strong> — Élagage & Abattage d’arbres à Magog et Sherbrooke
           </span>
           <a
-            href="tel:8198433101"
+            href="tel:+1-819-437-2104"
             className="font-semibold text-white hover:text-emerald-200 transition-all duration-200"
           >
-            (819) 843-3101
+            (819) 437-2104
           </a>
         </div>
 
@@ -152,7 +152,7 @@ export default function Header() {
                 <motion.a
                   whileHover={{ scale: 1.07 }}
                   whileTap={{ scale: 0.96 }}
-                  href="tel:8198433101"
+                  href="tel:+1-819-437-2104"
                   className="rounded-xl bg-[#1B4332] px-5 py-2 text-[15px] font-semibold text-white shadow-sm hover:bg-[#163627] transition"
                 >
                   Appeler
@@ -227,13 +227,7 @@ export default function Header() {
                     ))}
                     <li className="border-t border-slate-200 pt-2 mt-2">
                       <a
-                        href="tel:8198433101"
-                        className="block rounded-lg px-3 py-2 font-semibold text-emerald-700 hover:bg-slate-50"
-                      >
-                        (819) 843-3101
-                      </a>
-                      <a
-                        href="tel:8194372104"
+                        href="tel:+1-819-437-2104"
                         className="block rounded-lg px-3 py-2 font-semibold text-emerald-700 hover:bg-slate-50"
                       >
                         (819) 437-2104

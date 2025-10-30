@@ -39,13 +39,10 @@ function ScrollToSection() {
       const targetId = hash || path;
       if (targetId) {
         const el = document.getElementById(targetId);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     };
 
-    // Scroll au chargement complet du DOM + après lazy loading
     const timer = setTimeout(scrollToTarget, 600);
     window.addEventListener("hashchange", scrollToTarget);
 
@@ -183,9 +180,10 @@ export default function AppRoot() {
         </Suspense>
       </main>
 
+      {/* Section accessible pour le SEO sémantique */}
       <section id="contact" aria-hidden="false" className="sr-only">
         Contactez C&T Arbro — Élagage, Abattage et Entretien d’arbres à Magog et
-        Sherbrooke. Téléphone : 819-843-3101 / 819-437-2104.
+        Sherbrooke. Téléphone : 819-437-2104.
       </section>
 
       <Footer />
@@ -205,7 +203,7 @@ export default function AppRoot() {
             image: "https://ctarbro.ca/og-image.jpg",
             "@id": "https://ctarbro.ca",
             url: "https://ctarbro.ca",
-            telephone: ["+18198433101", "+18194372104"],
+            telephone: ["+18194372104"],
             address: {
               "@type": "PostalAddress",
               streetAddress: "Magog, QC",
