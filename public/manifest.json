@@ -50,7 +50,7 @@
   ],
   "screenshots": [
     {
-      "src": "/assets/og-image.jpg",
+      "src": "/og-image.jpg",
       "sizes": "1200x630",
       "type": "image/jpeg",
       "label": "Page d’accueil C&T Arbro"
