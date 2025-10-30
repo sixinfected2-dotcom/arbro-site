@@ -237,7 +237,7 @@ export default function Estimation() {
               href="mailto:contact.ctarbro@gmail.com"
               className="flex items-center gap-2 hover:text-emerald-600 transition"
             >
-              <Mail className="h-4 w-4" aria-hidden="true" /> contact.ctabro@gmail.com
+              <Mail className="h-4 w-4" aria-hidden="true" /> contact.ctarbro@gmail.com
             </a>
             <span className="flex items-center gap-2">
               <MapPin className="h-4 w-4" aria-hidden="true" /> Magog, Estrie
