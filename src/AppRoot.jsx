@@ -222,7 +222,7 @@ export default function AppRoot() {
               longitude: -72.147,
             },
             sameAs: [
-              "https://www.facebook.com/tonlienici",
+              "https://www.facebook.com/profile.php?id=61582498367361",
               "https://share.google/DiDwdpKmLmBViuMd6",
             ],
           }),

@@ -234,10 +234,10 @@ export default function Estimation() {
               <Phone className="h-4 w-4" aria-hidden="true" /> (819) 843-3101
             </a>
             <a
-              href="mailto:ctarbro@gmail.com"
+              href="mailto:contact.ctarbro@gmail.com"
               className="flex items-center gap-2 hover:text-emerald-600 transition"
             >
-              <Mail className="h-4 w-4" aria-hidden="true" /> ctarbro@gmail.com
+              <Mail className="h-4 w-4" aria-hidden="true" /> contact.ctabro@gmail.com
             </a>
             <span className="flex items-center gap-2">
               <MapPin className="h-4 w-4" aria-hidden="true" /> Magog, Estrie

@@ -66,7 +66,7 @@ export default function Footer() {
             </h3>
             <div className="flex space-x-6">
               <a
-                href="https://www.facebook.com/tonlienici"
+                href="https://www.facebook.com/profile.php?id=61582498367361"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Page Facebook de C&T Arbro"
@@ -130,10 +130,10 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-emerald-400" />
               <a
-                href="mailto:ctarbro@gmail.com"
+                href="mailto:contact.ctarbro@gmail.com"
                 className="hover:text-emerald-400 transition"
               >
-                ctarbro@gmail.com
+                contact.ctarbro@gmail.com 
               </a>
             </li>
             <li className="flex items-center gap-2 mt-2">
